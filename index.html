@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Danto · Authentic Italian Food</title>
+  <meta name="description" content="Danto – auténtica cocina italiana. Pasta fresca hecha a mano, pizza napolitana al horno de leña y postres caseros.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navegación -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#inicio" class="logo">Danto<span>.</span></a>
+      <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav__links" id="navLinks">
+        <a href="#nosotros">Nosotros</a>
+        <a href="#menu">Menú</a>
+        <a href="#galeria">Galería</a>
+        <a href="#opiniones">Opiniones</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#reservas" class="btn btn--small">Reservar</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="inicio">
+    <img class="hero__bg" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1920&q=80&auto=format&fit=crop" alt="Interior cálido del restaurante Danto">
+    <div class="hero__overlay"></div>
+    <div class="container hero__content">
+      <p class="eyebrow">Benvenuti a</p>
+      <h1>Danto</h1>
+      <p class="hero__tagline">Authentic Italian Food</p>
+      <p class="hero__text">Pasta fresca hecha a mano cada mañana, pizza napolitana al horno de leña y las recetas de la nonna, servidas con amor.</p>
+      <div class="hero__actions">
+        <a href="#reservas" class="btn">Reservar mesa</a>
+        <a href="#menu" class="btn btn--ghost">Ver el menú</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nosotros -->
+  <section class="section about" id="nosotros">
+    <div class="container about__grid">
+      <div class="about__images">
+        <img class="about__img about__img--main" src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=900&q=80&auto=format&fit=crop" alt="Pasta fresca con tomate" loading="lazy">
+        <img class="about__img about__img--small" src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600&q=80&auto=format&fit=crop" alt="Copa de vino tinto italiano" loading="lazy">
+      </div>
+      <div class="about__text">
+        <p class="eyebrow">La nostra storia</p>
+        <h2>Una tradición familiar desde Italia</h2>
+        <p>Danto nació del sueño de compartir la cocina con la que crecimos: sencilla, honesta y llena de sabor. Cada plato se prepara con ingredientes de temporada y productos importados directamente de Italia — tomates San Marzano, mozzarella di bufala, aceite de oliva virgen extra y Parmigiano Reggiano.</p>
+        <p>Aquí no hay atajos. Amasamos la pasta a mano, dejamos fermentar la masa de pizza 48 horas y cocinamos las salsas a fuego lento, como en casa.</p>
+        <ul class="features">
+          <li><strong>48h</strong><span>de fermentación</span></li>
+          <li><strong>100%</strong><span>pasta casera</span></li>
+          <li><strong>450°C</strong><span>horno de leña</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menú -->
+  <section class="section menu" id="menu">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">Il nostro menù</p>
+        <h2>Nuestros platos</h2>
+      </div>
+
+      <div class="tabs" role="tablist">
+        <button class="tab is-active" data-filter="all" role="tab">Todo</button>
+        <button class="tab" data-filter="antipasti" role="tab">Antipasti</button>
+        <button class="tab" data-filter="pasta" role="tab">Pasta</button>
+        <button class="tab" data-filter="pizza" role="tab">Pizza</button>
+        <button class="tab" data-filter="dolci" role="tab">Dolci</button>
+      </div>
+
+      <div class="menu__grid">
+        <article class="dish" data-cat="antipasti">
+          <img src="https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=700&q=80&auto=format&fit=crop" alt="Bruschetta al pomodoro" loading="lazy">
+          <div class="dish__body">
+            <div class="dish__head"><h3>Bruschetta al Pomodoro</h3><span class="price">8,50 €</span></div>
+            <p>Pan tostado de masa madre, tomate fresco, ajo, albahaca y aceite de oliva virgen extra.</p>
+          </div>
+        </article>
+
+        <article class="dish" data-cat="pasta">
+          <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=700&q=80&auto=format&fit=crop" alt="Spaghetti al pomodoro" loading="lazy">
+          <div class="dish__body">
+            <div class="dish__head"><h3>Spaghetti al Pomodoro</h3><span class="price">13,00 €</span></div>
+            <p>Spaghetti caseros con salsa de tomate San Marzano, albahaca fresca y Parmigiano.</p>
+          </div>
+        </article>
+
+        <article class="dish" data-cat="pasta">
+          <img src="https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=700&q=80&auto=format&fit=crop" alt="Lasaña de la nonna" loading="lazy">
+          <div class="dish__body">
+            <div class="dish__head"><h3>Lasagna della Nonna</h3><span class="price">15,50 €</span></div>
+            <p>Capas de pasta fresca, ragú boloñés cocinado 6 horas, bechamel y Parmigiano gratinado.</p>
+          </div>
+        </article>
+
+        <article class="dish" data-cat="pasta">
+          <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=700&q=80&auto=format&fit=crop" alt="Pasta con verduras" loading="lazy">
+          <div class="dish__body">
+            <div class="dish__head"><h3>Tagliatelle Primavera</h3><span class="price">14,00 €</span></div>
+            <p>Tagliatelle al huevo con verduras de temporada, aceite de oliva y pecorino romano.</p>
+          </div>
+        </article>
+
+        <article class="dish" data-cat="pizza">
+          <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=700&q=80&auto=format&fit=crop" alt="Pizza Margherita" loading="lazy">
+          <div class="dish__body">
+            <div class="dish__head"><h3>Pizza Margherita</h3><span class="price">11,00 €</span></div>
+            <p>Tomate San Marzano, mozzarella fior di latte, albahaca fresca y aceite de oliva.</p>
+          </div>
+        </article>
+
+        <article class="dish" data-cat="pizza">
+          <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=700&q=80&auto=format&fit=crop" alt="Pizza Diavola" loading="lazy">
+          <div class="dish__body">
+            <div class="dish__head"><h3>Pizza Diavola</h3><span class="price">13,50 €</span></div>
+            <p>Tomate, mozzarella, salame picante calabrés, aceitunas negras y un toque de guindilla.</p>
+          </div>
+        </article>
+
+        <article class="dish" data-cat="antipasti">
+          <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=700&q=80&auto=format&fit=crop" alt="Tagliata di manzo" loading="lazy">
+          <div class="dish__body">
+            <div class="dish__head"><h3>Tagliata di Manzo</h3><span class="price">22,00 €</span></div>
+            <p>Lomo de ternera a la brasa, rúcula, tomates cherry y lascas de Parmigiano Reggiano.</p>
+          </div>
+        </article>
+
+        <article class="dish" data-cat="dolci">
+          <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=700&q=80&auto=format&fit=crop" alt="Tiramisú casero" loading="lazy">
+          <div class="dish__body">
+            <div class="dish__head"><h3>Tiramisù Classico</h3><span class="price">7,00 €</span></div>
+            <p>Bizcocho savoiardi empapado en espresso, crema de mascarpone y cacao amargo.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galería -->
+  <section class="section gallery" id="galeria">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">Galleria</p>
+        <h2>Un vistazo a Danto</h2>
+      </div>
+      <div class="gallery__grid">
+        <img class="g-wide" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80&auto=format&fit=crop" alt="Mesa elegante con platos" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1595295333158-4742f28fbd85?w=700&q=80&auto=format&fit=crop" alt="Pizza recién salida del horno" loading="lazy">
+        <img class="g-tall" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=700&q=80&auto=format&fit=crop" alt="Sala del restaurante" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=700&q=80&auto=format&fit=crop" alt="Plato de pasta" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=700&q=80&auto=format&fit=crop" alt="Vino tinto" loading="lazy">
+        <img class="g-wide" src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=1200&q=80&auto=format&fit=crop" alt="Pizza margherita" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- Opiniones -->
+  <section class="section reviews" id="opiniones">
+    <div class="container">
+      <div class="section__head section__head--light">
+        <p class="eyebrow">Dicono di noi</p>
+        <h2>Lo que dicen nuestros clientes</h2>
+      </div>
+      <div class="reviews__grid">
+        <blockquote class="review">
+          <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+          <p>“La mejor carbonara que he probado fuera de Roma. Se nota que la pasta es casera.”</p>
+          <cite>— Laura M.</cite>
+        </blockquote>
+        <blockquote class="review">
+          <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+          <p>“Ambiente acogedor, servicio encantador y una pizza napolitana de verdad. Volveremos.”</p>
+          <cite>— Marco R.</cite>
+        </blockquote>
+        <blockquote class="review">
+          <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+          <p>“El tiramisú es pura nostalgia. Me sentí como en casa de mi abuela en Nápoles.”</p>
+          <cite>— Giulia P.</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reservas -->
+  <section class="section reserve" id="reservas">
+    <div class="container reserve__grid">
+      <div class="reserve__text">
+        <p class="eyebrow">Prenota un tavolo</p>
+        <h2>Reserva tu mesa</h2>
+        <p>Te esperamos para una velada italiana. Para grupos de más de 8 personas, llámanos directamente.</p>
+        <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=900&q=80&auto=format&fit=crop" alt="Comedor de Danto preparado para la cena" loading="lazy">
+      </div>
+      <form class="form" id="reserveForm" novalidate>
+        <div class="form__row">
+          <label>Nombre<input type="text" name="nombre" required placeholder="Tu nombre"></label>
+          <label>Teléfono<input type="tel" name="telefono" required placeholder="600 000 000"></label>
+        </div>
+        <label>Email<input type="email" name="email" required placeholder="tu@email.com"></label>
+        <div class="form__row">
+          <label>Fecha<input type="date" name="fecha" id="fecha" required></label>
+          <label>Hora
+            <select name="hora" required>
+              <option value="">Elige hora</option>
+              <option>13:00</option><option>13:30</option><option>14:00</option><option>14:30</option>
+              <option>20:00</option><option>20:30</option><option>21:00</option><option>21:30</option><option>22:00</option>
+            </select>
+          </label>
+        </div>
+        <label>Personas
+          <select name="personas" required>
+            <option>1</option><option selected>2</option><option>3</option><option>4</option>
+            <option>5</option><option>6</option><option>7</option><option>8</option>
+          </select>
+        </label>
+        <label>Comentarios<textarea name="comentarios" rows="3" placeholder="Alergias, celebraciones…"></textarea></label>
+        <button type="submit" class="btn btn--full">Confirmar reserva</button>
+        <p class="form__msg" id="formMsg" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section class="section contact" id="contacto">
+    <div class="container contact__grid">
+      <div class="contact__card">
+        <h3>Dirección</h3>
+        <p>Calle Mayor 12<br>28013 Madrid</p>
+      </div>
+      <div class="contact__card">
+        <h3>Horario</h3>
+        <p>Martes a domingo<br>13:00 – 16:00 · 20:00 – 23:30<br><em>Lunes cerrado</em></p>
+      </div>
+      <div class="contact__card">
+        <h3>Contacto</h3>
+        <p><a href="tel:+34910000000">+34 910 000 000</a><br><a href="mailto:ciao@danto.es">ciao@danto.es</a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a href="#inicio" class="logo">Danto<span>.</span></a>
+      <p>Authentic Italian Food · © <span id="year"></span> Danto. Fatto con amore.</p>
+      <p class="footer__credit">Fotos: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
