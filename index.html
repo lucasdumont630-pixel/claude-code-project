@@ -122,6 +122,26 @@ dialog.lightbox::backdrop { background: rgba(8,7,6,.88); backdrop-filter: blur(4
 .lightbox .nav { display: flex; gap: .5rem; }
 .lightbox .nav button { background: #f5f1ea; color: #121417; border: 0; width: 2.6rem; height: 2.6rem; font: 700 1.1rem var(--f-mono); cursor: pointer; border-radius: var(--radius); }
 
+/* ---------- photo mosaics ---------- */
+.mosaic { display: grid; gap: 14px; margin: 0; }
+.mosaic figure { margin: 0; position: relative; overflow: hidden; border-radius: var(--radius); background: var(--surface); min-width: 0; }
+.mosaic img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+.mosaic figure:hover img { transform: scale(1.04); }
+.mosaic figcaption { position: absolute; left: .7rem; bottom: .7rem; background: rgba(10,9,8,.72); color: #f3efe8; font: 600 .68rem/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; padding: .45rem .6rem; border-radius: var(--radius); }
+.mosaic.local { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); grid-template-rows: 1fr 1fr; height: clamp(420px, 60vw, 680px); }
+.mosaic.local figure:first-child { grid-row: 1 / 3; }
+.mosaic.ink { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr); height: clamp(220px, 28vw, 340px); margin-bottom: 3rem; }
+.local-notes { display: flex; flex-wrap: wrap; gap: .5rem 1.6rem; margin-top: 1.4rem; font: 600 .8rem/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.local-notes span::before { content: "★ "; color: var(--accent); }
+@media (max-width: 760px) {
+  .mosaic.local { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; height: auto; }
+  .mosaic.local figure:first-child { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 1; }
+  .mosaic.local figure { aspect-ratio: 1; }
+  .mosaic.ink { grid-template-columns: 1fr 1fr; height: auto; }
+  .mosaic.ink figure:first-child { grid-column: 1 / -1; aspect-ratio: 3 / 2; }
+  .mosaic.ink figure { aspect-ratio: 1; }
+}
+
 /* ---------- services ---------- */
 .menu { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.5rem, 4vw, 3.5rem); }
 .menu .col { min-width: 0; transition: opacity .4s; }
@@ -181,6 +201,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     </a>
     <nav class="links" aria-label="Secciones">
       <a href="#cortes">Cortes</a>
+      <a href="#local">El local</a>
       <a href="#servicios">Servicios</a>
       <a href="#tattoo">Tattoo</a>
       <a href="#visita">Visita</a>
@@ -215,15 +236,32 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <div class="head">
         <p class="eyebrow">Galería</p>
         <h2>Cortes de la casa</h2>
-        <p>Trabajos recientes de la silla. Toca una foto para verla en grande.</p>
+        <p>Trabajos reales de la casa. Toca una foto para verla en grande.</p>
       </div>
       <div class="chips" id="chips" role="group" aria-label="Filtrar cortes"></div>
       <div class="grid" id="grid"></div>
     </div>
   </section>
 
+  <!-- EL LOCAL -->
+  <section class="block" id="local" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">El local</p>
+        <h2>Pasa, siéntate, tómate algo</h2>
+        <p>Paredes negras, fotos en blanco y negro, sofá chester y una cerveza fría mientras esperas tu turno.</p>
+      </div>
+      <div class="mosaic local">
+        <figure><img src="img/local/barberos.jpg" alt="Barberos de Blackstar cortando a varios clientes a la vez"><figcaption>En la silla</figcaption></figure>
+        <figure><img src="img/local/sala-espera.jpg" alt="Sala de espera con sofá chester y pared de fotos en blanco y negro"><figcaption>Sala de espera</figcaption></figure>
+        <figure><img src="img/local/sillas.jpg" alt="Puestos de barbería con espejos iluminados"><figcaption>Los puestos</figcaption></figure>
+      </div>
+      <div class="local-notes"><span>Cerveza fría</span><span>Máquina arcade</span><span>Estilo americano</span></div>
+    </div>
+  </section>
+
   <!-- SERVICIOS -->
-  <section class="block" id="servicios" style="padding-top:0">
+  <section class="block" id="servicios">
     <div class="wrap">
       <div class="head">
         <p class="eyebrow">Carta</p>
@@ -244,6 +282,11 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <p class="eyebrow">Blackstar Ink</p>
         <h2>Y además, tattoo</h2>
         <p>Entras a por un fade y sales con una idea en la piel. Diseños a medida, material estéril de un solo uso y tiempo para hablarlo con calma.</p>
+      </div>
+      <div class="mosaic ink">
+        <figure><img src="img/tattoo/estudio.jpg" alt="Estudio de tatuaje de Blackstar con dos artistas trabajando"><figcaption>El estudio</figcaption></figure>
+        <figure><img src="img/tattoo/camilla.jpg" alt="Camilla de tatuaje protegida, entre focos y fotos enmarcadas"><figcaption>Tu camilla</figcaption></figure>
+        <figure><img src="img/tattoo/plantilla.jpg" alt="Tatuador colocando la plantilla del diseño en el brazo de un cliente"><figcaption>La plantilla</figcaption></figure>
       </div>
       <div class="styles">
         <article>
@@ -327,18 +370,14 @@ const BOOKSY = "https://booksy.com/es-es/22436_blackstar_barberia_55436_alicante
 // Galería. Pon la ruta de tu foto en `foto` (p. ej. "img/cortes/skin-fade-1.jpg").
 // Si `foto` está vacío se dibuja una textura con el perfil del corte (base = 0..1 altura donde empieza el pelo, top = largo).
 const CORTES = [
-  { nombre: "Low taper texturizado", cat: "fade",    detalle: "Taper bajo en nuca, textura arriba", foto: "img/cortes/low-taper-texturizado.jpg", base: .12, top: .8, textura: true },
-  { nombre: "Skin fade texturizado", cat: "fade",    detalle: "#0 → 4 cm, crop arriba",      foto: "", base: .30, top: .9, textura: true },
-  { nombre: "Burst fade",            cat: "fade",    detalle: "Degradado en arco tras oreja", foto: "", base: .22, top: 1 },
-  { nombre: "Mid fade + raya",       cat: "diseno",  detalle: "Raya a navaja, peinado lateral", foto: "", base: .35, top: .8, raya: true },
-  { nombre: "Clásico a tijera",      cat: "clasico", detalle: "Tijera completa, nuca natural", foto: "", base: .05, top: .85 },
-  { nombre: "Pompadour",             cat: "clasico", detalle: "Volumen arriba, laterales #2",  foto: "", base: .15, top: 1.15 },
-  { nombre: "Buzz cut",              cat: "clasico", detalle: "Todo #2 con contorno",          foto: "", base: .03, top: .25 },
-  { nombre: "Barba perfilada",       cat: "barba",   detalle: "Contorno a navaja, toalla caliente", foto: "", base: .0, top: .45, barba: true },
-  { nombre: "Fade + barba",          cat: "barba",   detalle: "Degradado que conecta con la barba", foto: "", base: .25, top: .6, barba: true },
-  { nombre: "Freestyle lines",       cat: "diseno",  detalle: "Dibujo a cuchilla sobre el fade", foto: "", base: .28, top: .7, lineas: true },
-  { nombre: "High fade",             cat: "fade",    detalle: "#0 alto, arriba corto",         foto: "", base: .55, top: .55 },
-  { nombre: "Mullet moderno",        cat: "diseno",  detalle: "Burst + largo en nuca",         foto: "", base: .2, top: 1.05, textura: true },
+  { nombre: "Low taper texturizado", cat: "fade",    detalle: "Taper bajo en nuca, textura arriba",  foto: "img/cortes/low-taper-texturizado.jpg" },
+  { nombre: "High fade",             cat: "fade",    detalle: "Degradado alto a piel, barba a juego", foto: "img/cortes/high-fade.jpg" },
+  { nombre: "Drop fade rizado",      cat: "fade",    detalle: "Degradado bajo con rizo arriba",       foto: "img/cortes/drop-fade-rizado.jpg" },
+  { nombre: "Taper rizado",          cat: "fade",    detalle: "Taper en nuca, volumen y movimiento",  foto: "img/cortes/taper-rizado.jpg" },
+  { nombre: "Arreglo de barba",      cat: "barba",   detalle: "Perfilado a máquina y navaja",         foto: "img/cortes/arreglo-barba.jpg" },
+  { nombre: "Mid fade + raya",       cat: "diseno",  detalle: "Raya a navaja, peinado lateral",       foto: "", base: .35, top: .8, raya: true },
+  { nombre: "Clásico a tijera",      cat: "clasico", detalle: "Tijera completa, nuca natural",        foto: "", base: .05, top: .85 },
+  { nombre: "Freestyle lines",       cat: "diseno",  detalle: "Dibujo a cuchilla sobre el fade",      foto: "", base: .28, top: .7, lineas: true },
 ];
 const CATS = { all: "Todos", fade: "Fades", clasico: "Clásicos", barba: "Barba", diseno: "Diseño" };
 
