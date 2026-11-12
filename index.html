@@ -89,9 +89,22 @@ nav.links a:hover { color: var(--ink); }
 @media (max-width: 760px) { nav.links { display: none; } .mode { margin-left: auto; } .top .btn { display: none; } }
 
 /* ---------- hero ---------- */
-.hero { padding-block: clamp(2.5rem, 6vw, 5rem) clamp(2rem, 5vw, 4rem); overflow: hidden; }
+.hero {
+  --hero-img: url("img/portada.jpg");
+  --ink: #f3efe8; --muted: rgba(243,239,232,.8); --line: rgba(243,239,232,.2);
+  position: relative; isolation: isolate; overflow: hidden; color: var(--ink);
+  padding-block: clamp(4rem, 10vw, 8rem) clamp(3rem, 7vw, 6rem);
+  background: #0c0c0e;
+}
+.hero::before { content: ""; position: absolute; inset: 0; z-index: -2; background: var(--hero-img) center 14% / cover no-repeat; transform: scale(1.04); animation: heroIn 1.6s cubic-bezier(.2,.7,.2,1) both; }
+.hero::after { content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(90deg, rgba(10,10,12,.86) 0%, rgba(10,10,12,.5) 50%, rgba(10,10,12,.18) 100%), linear-gradient(to top, rgba(10,10,12,.7), transparent 45%); }
+@keyframes heroIn { from { transform: scale(1.12); filter: brightness(.6); } }
+.hero .eyebrow { color: var(--muted); }
+.hero .btn.ghost:hover { background: var(--ink); color: #0c0c0e; }
+@media (max-width: 640px) { .hero::after { background: linear-gradient(180deg, rgba(10,10,12,.55) 0%, rgba(10,10,12,.85) 60%, rgba(10,10,12,.95) 100%); } }
 .hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(1.5rem, 4vw, 4rem); align-items: end; }
-.hero h1 { font-size: clamp(4.2rem, 15vw, 12.5rem); font-weight: 900; line-height: .82; letter-spacing: -.01em; }
+.hero h1 { margin-top: .9rem; font-size: clamp(4.2rem, 15vw, 12.5rem); font-weight: 900; line-height: .82; letter-spacing: -.01em; }
 .hero h1 .star { color: var(--accent); display: inline-block; transform: translateY(-.06em); }
 .hero .sub { display: flex; flex-wrap: wrap; gap: .5rem 1.4rem; margin-top: 1.4rem; font: 600 .85rem/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; }
 .hero .sub span:not(:last-child)::after { content: "·"; margin-left: 1.4rem; color: var(--accent); }
@@ -177,6 +190,7 @@ dialog.lightbox::backdrop { background: rgba(8,7,6,.88); backdrop-filter: blur(4
 .menu li .meta { grid-column: 1 / -1; font-size: .85rem; color: var(--muted); }
 :root:not([data-mode="ink"]) .menu .col.tattoo, :root[data-mode="ink"] .menu .col.barber { opacity: .55; }
 .menu .col:hover { opacity: 1 !important; }
+@media (min-width: 980px) { .menu { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); } #menu-barber { display: grid; grid-template-columns: 1fr 1fr; column-gap: 2rem; } }
 .disclaimer { margin-top: 1.4rem; font: .78rem var(--f-mono); color: var(--muted); }
 @media (max-width: 760px) { .menu { grid-template-columns: 1fr; } }
 
@@ -244,10 +258,10 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <section class="hero">
     <div class="wrap">
       <div>
-        <p class="eyebrow" data-barber="Barbería · Est. Alicante" data-ink="Estudio de tatuaje · Alicante">Barbería · Est. Alicante</p>
+        <p class="eyebrow" data-barber="Barbería · Carolinas Altas, Alicante" data-ink="Tattoo · Carolinas Altas, Alicante">Barbería · Carolinas Altas, Alicante</p>
         <h1>Black<span class="star">★</span><br>star</h1>
-        <div class="sub"><span>Cortes</span><span>Barba</span><span>Tattoo</span></div>
-        <p class="lede" data-barber="Fades al milímetro, clásicos de tijera y barbas perfiladas a navaja. Una silla, una máquina y el tiempo que haga falta." data-ink="La misma casa, otra aguja. Fine line, blackwork y lettering con diseño propio. Pide cita, cuéntanos la idea y la dibujamos contigo.">Fades al milímetro, clásicos de tijera y barbas perfiladas a navaja. Una silla, una máquina y el tiempo que haga falta.</p>
+        <div class="sub"><span>Cortes</span><span>Barba</span><span>Tattoo</span><span>★ 4,8 · 253 reseñas</span></div>
+        <p class="lede" data-barber="Cortes, barba y tatuajes al más puro estilo americano. Tómate una cerveza mientras te cortamos y echa una partida en nuestra máquina arcade." data-ink="La misma casa, otra aguja. Fine line, blackwork y lettering con diseño propio. Pide cita, cuéntanos la idea y la dibujamos contigo.">Cortes, barba y tatuajes al más puro estilo americano. Tómate una cerveza mientras te cortamos y echa una partida en nuestra máquina arcade.</p>
         <div class="ctas">
           <a class="btn" href="https://booksy.com/es-es/22436_blackstar_barberia_55436_alicante-alacant" target="_blank" rel="noopener">Reservar en Booksy ↗</a>
           <a class="btn ghost" href="#fade-lab" data-barber="Diseña tu fade" data-ink="Ver estilos de tattoo" data-href-ink="#tattoo" data-href-barber="#fade-lab">Diseña tu fade</a>
@@ -343,7 +357,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <div class="col barber"><h3>Barbería <small>MÁQUINA · TIJERA · NAVAJA</small></h3><ul id="menu-barber"></ul></div>
         <div class="col tattoo"><h3>Tattoo <small>DISEÑO PROPIO</small></h3><ul id="menu-ink"></ul></div>
       </div>
-      <p class="disclaimer">Precios y duraciones actualizados en Booksy. Reserva allí para ver disponibilidad en tiempo real.</p>
+      <p class="disclaimer">Precios de nuestra ficha de Booksy. Reserva allí para ver huecos libres en tiempo real. Los tattoos se presupuestan en la consulta.</p>
     </div>
   </section>
 
@@ -396,11 +410,12 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       </div>
       <div class="card">
         <span class="eyebrow">Dónde</span>
-        <big>Alicante<br>(Alacant)</big>
-        <p id="address">Dirección exacta y teléfono en la ficha de Booksy.</p>
+        <big>Carolinas<br>Altas</big>
+        <p id="address">Calle Médico Vicente Reyes, 4, Local 4<br>03015 Alicante</p>
+        <p style="color:var(--muted);font-size:.9rem">Ven con tiempo: hay cerveza, sofá y máquina arcade.</p>
         <div style="display:flex;flex-wrap:wrap;gap:.6rem">
           <a class="btn" href="https://booksy.com/es-es/22436_blackstar_barberia_55436_alicante-alacant" target="_blank" rel="noopener">Reservar ↗</a>
-          <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Blackstar+Barberia+Alicante" target="_blank" rel="noopener">Cómo llegar ↗</a>
+          <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=38.36152075696902%2C-0.4741875782101986" target="_blank" rel="noopener">Cómo llegar ↗</a>
         </div>
       </div>
     </div>
@@ -409,8 +424,8 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 
 <footer>
   <div class="wrap">
-    <span>★ Blackstar · Barbería &amp; Tattoo · Alicante</span>
-    <span>Reservas por Booksy</span>
+    <span>★ Blackstar · Calle Médico Vicente Reyes, 4 · 03015 Alicante</span>
+    <span><a href="https://www.instagram.com/blackstarconceptart/" target="_blank" rel="noopener">Instagram @blackstarconceptart</a> · <a href="https://www.blackstarconceptart.com/" target="_blank" rel="noopener">blackstarconceptart.com</a></span>
   </div>
 </footer>
 
@@ -436,8 +451,8 @@ const BOOKSY = "https://booksy.com/es-es/22436_blackstar_barberia_55436_alicante
 // Galería. Pon la ruta de tu foto en `foto` (p. ej. "img/cortes/skin-fade-1.jpg").
 // Si `foto` está vacío se dibuja una textura con el perfil del corte (base = 0..1 altura donde empieza el pelo, top = largo).
 const CORTES = [
+  { nombre: "Low taper texturizado", cat: "fade",    detalle: "Taper bajo en nuca, textura arriba", foto: "img/cortes/low-taper-texturizado.jpg", base: .12, top: .8, textura: true },
   { nombre: "Skin fade texturizado", cat: "fade",    detalle: "#0 → 4 cm, crop arriba",      foto: "", base: .30, top: .9, textura: true },
-  { nombre: "Low taper",             cat: "fade",    detalle: "Taper #1 en nuca y patilla",  foto: "", base: .12, top: .7 },
   { nombre: "Burst fade",            cat: "fade",    detalle: "Degradado en arco tras oreja", foto: "", base: .22, top: 1 },
   { nombre: "Mid fade + raya",       cat: "diseno",  detalle: "Raya a navaja, peinado lateral", foto: "", base: .35, top: .8, raya: true },
   { nombre: "Clásico a tijera",      cat: "clasico", detalle: "Tijera completa, nuca natural", foto: "", base: .05, top: .85 },
@@ -451,32 +466,52 @@ const CORTES = [
 ];
 const CATS = { all: "Todos", fade: "Fades", clasico: "Clásicos", barba: "Barba", diseno: "Diseño" };
 
-// Precios orientativos: revísalos y cámbialos por los de tu ficha de Booksy.
+// Precios de la ficha de Booksy (noviembre 2026). Cámbialos aquí si se actualizan.
 const SERVICIOS = {
   barber: [
-    { n: "Corte de pelo",           p: "15 €", d: "30 min", m: "Máquina y tijera, lavado y peinado" },
-    { n: "Skin fade",               p: "17 €", d: "40 min", m: "Degradado a piel con acabado a navaja" },
-    { n: "Corte + barba",           p: "22 €", d: "50 min", m: "El combo de la casa" },
-    { n: "Arreglo de barba",        p: "10 €", d: "20 min", m: "Perfilado a navaja y toalla caliente" },
-    { n: "Diseño / freestyle",      p: "+5 €", d: "15 min", m: "Líneas a cuchilla sobre tu corte" },
-    { n: "Corte infantil",          p: "12 €", d: "25 min", m: "Hasta 12 años" },
+    { n: "Corte | Haircut",                        p: "18 €" },
+    { n: "Corte · Barba | Haircut & Beard",        p: "28 €" },
+    { n: "Corte · Cejas",                          p: "21 €" },
+    { n: "Corte · Barba · Cejas",                  p: "30 €" },
+    { n: "Corte · Barba Premium · Mascarilla",     p: "45 €" },
+    { n: "Corte · Limpieza facial",                p: "35 €" },
+    { n: "Corte niños",                            p: "15 €", m: "Hasta 10 años" },
+    { n: "Antigüedad demostrable",                 p: "16 €", m: "Corte para clientes de la casa" },
+    { n: "Corte y barba antigüedad demostrable",   p: "23 €", m: "Para clientes de la casa" },
+    { n: "Barba",                                  p: "18 €" },
+    { n: "Barba especial",                         p: "20 €" },
+    { n: "Barba Premium · Mascarilla facial",      p: "33 €" },
+    { n: "Perfilado de barba",                     p: "12 €" },
+    { n: "Cejas",                                  p: "5 €" },
+    { n: "Sólo marcar recorte",                    p: "5 €" },
+    { n: "Lavado y secado",                        p: "10 €" },
+    { n: "Limpieza facial",                        p: "18 €" },
+    { n: "Tinte",                                  p: "30 €" },
+    { n: "Matización",                             p: "20 €" },
+    { n: "Mechas",                                 p: "50 €" },
+    { n: "Mechas y corte",                         p: "55 €" },
+    { n: "Rizado permanente",                      p: "60 €" },
+    { n: "Color platinado | Silver Grey",          p: "80 €" },
+    { n: "BLACKSTAR AT HOME",                      p: "40 €", m: "VIP a domicilio" },
+    { n: "VIP BLACKSTAR EXPERIENCE",               p: "120 €", m: "La experiencia completa de la casa" },
   ],
   ink: [
-    { n: "Consulta de diseño",      p: "Gratis", d: "20 min", m: "Idea, zona, tamaño y presupuesto" },
-    { n: "Tattoo mini",             p: "desde 50 €", d: "45 min", m: "Piezas pequeñas de línea fina" },
-    { n: "Tattoo mediano",          p: "desde 100 €", d: "2 h", m: "Según tamaño y detalle" },
-    { n: "Sesión completa",         p: "a consultar", d: "4–5 h", m: "Piezas grandes por sesiones" },
+    { n: "Consulta de diseño",   p: "Sin coste", m: "Idea, zona, tamaño y presupuesto" },
+    { n: "Fine line",            p: "A consultar", m: "Piezas pequeñas de trazo fino" },
+    { n: "Blackwork",            p: "A consultar", m: "Negro sólido y geometría" },
+    { n: "Lettering",            p: "A consultar", m: "Nombres, fechas y frases" },
+    { n: "Piezas grandes",       p: "A consultar", m: "Por sesiones" },
   ],
 };
 
 // Horario: [abre, cierra] en 24h, o null si cierra. Varios tramos: [[10,14],[16,20.5]]
 const HORARIO = [
-  ["Lunes",     null],
-  ["Martes",    [[10, 14], [16, 20.5]]],
-  ["Miércoles", [[10, 14], [16, 20.5]]],
-  ["Jueves",    [[10, 14], [16, 20.5]]],
-  ["Viernes",   [[10, 20.5]]],
-  ["Sábado",    [[9.5, 14.5]]],
+  ["Lunes",     [[10, 13.5], [16, 20.5]]],
+  ["Martes",    [[10, 13.5], [16, 20.5]]],
+  ["Miércoles", [[10, 13.5], [16, 20.5]]],
+  ["Jueves",    [[10, 13.5], [16, 20.5]]],
+  ["Viernes",   [[10, 13.5], [16, 20.5]]],
+  ["Sábado",    [[10, 17]]],
   ["Domingo",   null],
 ];
 
@@ -502,7 +537,7 @@ $$(".mode button").forEach(b => b.addEventListener("click", () => setMode(b.data
 
 /* ---------- ticker ---------- */
 (() => {
-  const words = ["Skin fade", "Barba a navaja", "Fine line", "Tijera", "Blackwork", "Toalla caliente", "Lettering", "Alicante"];
+  const words = ["Skin fade", "Barba a navaja", "Fine line", "Cerveza fría", "Blackwork", "Máquina arcade", "Lettering", "Carolinas Altas"];
   $("#ticker").innerHTML = [...words, ...words].map(w => `<span>${w}</span>`).join("");
 })();
 
@@ -637,7 +672,7 @@ lb.addEventListener("click", e => { if (e.target === lb) lb.close(); });
 lb.addEventListener("keydown", e => { if (e.key === "ArrowLeft") openLb(lbK - 1); if (e.key === "ArrowRight") openLb(lbK + 1); });
 
 /* ---------- services ---------- */
-const li = s => `<li><b>${s.n}</b><span class="price">${s.p}</span><span class="meta">${s.d} · ${s.m}</span></li>`;
+const li = s => `<li><b>${s.n}</b><span class="price">${s.p}</span>${s.m ? `<span class="meta">${s.m}</span>` : ""}</li>`;
 $("#menu-barber").innerHTML = SERVICIOS.barber.map(li).join("");
 $("#menu-ink").innerHTML = SERVICIOS.ink.map(li).join("");
 
