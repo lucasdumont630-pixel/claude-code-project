@@ -103,7 +103,7 @@ section.block { padding-block: clamp(3.5rem, 8vw, 6.5rem); }
 .chips button { border: 1px solid var(--ink); background: transparent; color: var(--ink); border-radius: 999px; padding: .5rem 1rem; font: 600 .78rem/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; cursor: pointer; }
 .chips button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 .chips button .n { opacity: .6; margin-left: .35em; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 14px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 14px; }
 .tile { position: relative; margin: 0; cursor: zoom-in; overflow: hidden; border-radius: var(--radius); background: var(--skin); aspect-ratio: 4 / 5; max-width: 100%; border: 0; padding: 0; text-align: left; color: inherit; font: inherit; }
 .tile canvas, .tile img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
 .tile:hover canvas, .tile:hover img { transform: scale(1.05); }
@@ -375,11 +375,9 @@ const CORTES = [
   { nombre: "Drop fade rizado",      cat: "fade",    detalle: "Degradado bajo con rizo arriba",       foto: "img/cortes/drop-fade-rizado.jpg" },
   { nombre: "Taper rizado",          cat: "fade",    detalle: "Taper en nuca, volumen y movimiento",  foto: "img/cortes/taper-rizado.jpg" },
   { nombre: "Arreglo de barba",      cat: "barba",   detalle: "Perfilado a máquina y navaja",         foto: "img/cortes/arreglo-barba.jpg" },
-  { nombre: "Mid fade + raya",       cat: "diseno",  detalle: "Raya a navaja, peinado lateral",       foto: "", base: .35, top: .8, raya: true },
-  { nombre: "Clásico a tijera",      cat: "clasico", detalle: "Tijera completa, nuca natural",        foto: "", base: .05, top: .85 },
-  { nombre: "Freestyle lines",       cat: "diseno",  detalle: "Dibujo a cuchilla sobre el fade",      foto: "", base: .28, top: .7, lineas: true },
+  { nombre: "Fade + diseño",         cat: "diseno",  detalle: "Degradado con líneas a cuchilla",      foto: "img/cortes/fade-diseno.jpg" },
 ];
-const CATS = { all: "Todos", fade: "Fades", clasico: "Clásicos", barba: "Barba", diseno: "Diseño" };
+const CATS = { all: "Todos", fade: "Fades", diseno: "Diseño", barba: "Barba" };
 
 // Precios de la ficha de Booksy (noviembre 2026). Cámbialos aquí si se actualizan.
 const SERVICIOS = {
