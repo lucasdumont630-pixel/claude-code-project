@@ -7,4 +7,4 @@
 
 Para añadir más: guarda la foto en `trabajos/` y copia una línea `<figure data-c="...">`
 en `index.html`. Estilos para `data-c`: fade, rizos, diseno, color, clasico.
-La edición (tono cálido, contraste, viñeta y grano) se aplica sola por CSS.
+La edición (blanco y negro, contraste, viñeta y grano) se aplica sola por CSS.
