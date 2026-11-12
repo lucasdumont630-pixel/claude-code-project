@@ -119,22 +119,29 @@ section{scroll-margin-top:80px}
 .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
 .filters button{appearance:none;border:1px solid var(--line);background:transparent;color:var(--bone-dim);font:500 .78rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;padding:.8em 1.1em;cursor:pointer}
 .filters button[aria-pressed="true"]{background:var(--brass);color:var(--leather);border-color:var(--brass)}
-.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:220px;grid-auto-flow:dense;gap:10px}
-.grid figure{margin:0;position:relative}
-.grid figure .ph{height:100%}
-.grid figure.tall{grid-row:span 2}
-.grid figure.wide{grid-column:span 2}
-.grid figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:28px 14px 12px;background:linear-gradient(transparent,rgba(10,7,5,.85));display:flex;justify-content:space-between;gap:8px;font:500 .75rem/1.2 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;pointer-events:none}
-.grid figcaption span:last-child{color:var(--brass)}
-.grid figure[hidden]{display:none}
-@media (max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:190px}}
-@media (max-width:480px){.grid{grid-auto-rows:160px}.grid figure.wide{grid-column:span 2}}
+.masonry{columns:4 220px;column-gap:12px}
+.masonry figure{margin:0 0 12px;break-inside:avoid;position:relative}
+.masonry figure[hidden]{display:none}
+.masonry .open{all:unset;display:block;width:100%;cursor:zoom-in}
+.masonry .open:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+.masonry .ph img{height:auto}
+.masonry figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:26px 12px 10px;background:linear-gradient(transparent,rgba(10,7,5,.85));font:500 .7rem/1.2 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--brass);pointer-events:none}
+.filters .n{opacity:.6;margin-left:.3em}
+@media (max-width:480px){.masonry{columns:2;column-gap:8px}.masonry figure{margin-bottom:8px}}
+.lb{border:0;padding:0;background:transparent;max-width:min(92vw,560px);max-height:92vh;overflow:visible}
+.lb::backdrop{background:rgba(10,7,5,.9)}
+.lb img{display:block;max-width:100%;max-height:82vh;width:auto;margin:auto;border:1px solid var(--line)}
+.lb .bar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:12px;font:500 .78rem/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--bone)}
+.lb .bar span{color:var(--brass)}
+.lb button{appearance:none;background:transparent;border:1px solid var(--line);color:var(--bone);font:500 .78rem/1 var(--f-mono);padding:.7em .9em;cursor:pointer}
+.lb button:hover{border-color:var(--brass);color:var(--brass)}
 .hint{margin-top:16px;font:400 .78rem/1.4 var(--f-mono);color:var(--bone-dim)}
 
 /* why / numbers */
 .why{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
 @media (max-width:860px){.why{grid-template-columns:1fr}}
-.why .ph{aspect-ratio:5/4}
+.why .ph{aspect-ratio:4/3}
+.why .ph img{object-position:50% 40%}
 .points{display:grid;gap:22px;margin-top:28px}
 .point{display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;align-items:start}
 .point svg{width:40px;height:40px;stroke:var(--brass);fill:none;stroke-width:1.4}
@@ -215,7 +222,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;
       </div>
       <div class="hero-media">
         <div class="stamp" aria-hidden="true"><div><b>13</b>Club<br>Alicante</div></div>
-        <div class="ph"><img src="https://d375139ucebi94.cloudfront.net/region2/es/68002/inspiration/9471d34d42544ff0830fd169e490d7-barbershop-club-13-alicante-inspiration-98c96713c3bb42a4ab558ea90d25d2-booksy.jpeg?size=640x0" alt="Trabajo de Barbershop Club 13 en Alicante" loading="eager"><div class="fallback">Tu foto del local<small>img/hero.jpg</small></div></div>
+        <div class="ph"><img src="https://d375139ucebi94.cloudfront.net/region2/es/68002/inspiration/9471d34d42544ff0830fd169e490d7-barbershop-club-13-alicante-inspiration-98c96713c3bb42a4ab558ea90d25d2-booksy.jpeg?size=640x0" alt="Trabajo de Barbershop Club 13 en Alicante" loading="eager" data-fallback="img/trabajos/14.jpg"></div>
       </div>
     </div>
     <div class="big13" aria-hidden="true">13</div>
@@ -252,34 +259,59 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;
   <section id="cortes" class="band alt">
     <div class="wrap">
       <div class="head">
-        <span class="eyebrow">Trabajos recientes</span>
-        <h2>Cortes que <em>hablan solos.</em></h2>
-        <p>Una muestra de lo que sale de nuestras sillas. Pasa el ratón (o toca) para ver la foto sin edición.</p>
+        <span class="eyebrow">Nuestro trabajo · 32 cortes</span>
+        <h2>Salidos de <em>nuestras sillas.</em></h2>
+        <p>Fotos reales de clientes de Club 13. Filtra por estilo y toca una foto para verla en grande.</p>
       </div>
-      <div class="filters" role="group" aria-label="Filtrar galería">
-        <button type="button" id="f-all" data-f="all" aria-pressed="true">Todo</button>
-        <button type="button" id="f-fade" data-f="fade" aria-pressed="false">Fades</button>
-        <button type="button" id="f-clasico" data-f="clasico" aria-pressed="false">Clásicos</button>
-        <button type="button" id="f-barba" data-f="barba" aria-pressed="false">Barba</button>
-        <button type="button" id="f-local" data-f="local" aria-pressed="false">El local</button>
+      <div class="filters" role="group" aria-label="Filtrar trabajos">
+        <button type="button" id="f-all" data-f="all" aria-pressed="true">Todo <span class="n"></span></button>
+        <button type="button" id="f-fade" data-f="fade" aria-pressed="false">Fades <span class="n"></span></button>
+        <button type="button" id="f-rizos" data-f="rizos" aria-pressed="false">Rizos y textura <span class="n"></span></button>
+        <button type="button" id="f-diseno" data-f="diseno" aria-pressed="false">Diseños <span class="n"></span></button>
+        <button type="button" id="f-color" data-f="color" aria-pressed="false">Color <span class="n"></span></button>
+        <button type="button" id="f-clasico" data-f="clasico" aria-pressed="false">Clásicos y barba <span class="n"></span></button>
       </div>
-      <div class="grid" id="grid">
-        <figure class="tall" data-c="fade"><div class="ph"><img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=700&q=80" alt="Skin fade con raya marcada" loading="lazy"><div class="fallback">Skin fade<small>img/corte-1.jpg</small></div></div><figcaption><span>Skin fade</span><span>Fade</span></figcaption></figure>
-        <figure class="wide" data-c="local"><div class="ph"><img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1000&q=80" alt="Sillas de barbero del local" loading="lazy"><div class="fallback">El local<small>img/local-1.jpg</small></div></div><figcaption><span>Nuestras sillas</span><span>Local</span></figcaption></figure>
-        <figure data-c="barba"><div class="ph"><img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=600&q=80" alt="Arreglo de barba con navaja" loading="lazy"><div class="fallback">Barba a navaja<small>img/barba-1.jpg</small></div></div><figcaption><span>Perfilado</span><span>Barba</span></figcaption></figure>
-        <figure class="tall" data-c="clasico"><div class="ph"><img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=700&q=80" alt="Corte clásico a tijera" loading="lazy"><div class="fallback">Clásico a tijera<small>img/corte-2.jpg</small></div></div><figcaption><span>Tijera</span><span>Clásico</span></figcaption></figure>
-        <figure data-c="fade"><div class="ph"><img src="https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?auto=format&fit=crop&w=600&q=80" alt="Degradado medio con textura arriba" loading="lazy"><div class="fallback">Mid fade<small>img/corte-3.jpg</small></div></div><figcaption><span>Mid fade</span><span>Fade</span></figcaption></figure>
-        <figure data-c="barba"><div class="ph"><img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=600&q=80" alt="Barba arreglada y perfilada" loading="lazy"><div class="fallback">Barba completa<small>img/barba-2.jpg</small></div></div><figcaption><span>Toalla caliente</span><span>Barba</span></figcaption></figure>
-        <figure class="wide" data-c="local"><div class="ph"><img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1000&q=80" alt="Interior de la barbería" loading="lazy"><div class="fallback">Interior<small>img/local-2.jpg</small></div></div><figcaption><span>Ensanche Diputación</span><span>Local</span></figcaption></figure>
-        <figure data-c="clasico"><div class="ph"><img src="https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?auto=format&fit=crop&w=600&q=80" alt="Peinado clásico hacia atrás" loading="lazy"><div class="fallback">Pompadour<small>img/corte-4.jpg</small></div></div><figcaption><span>Pompadour</span><span>Clásico</span></figcaption></figure>
+      <div class="masonry" id="grid">
+        <figure data-c="rizos"><button type="button" class="open" id="ph-01" aria-label="Ampliar foto 1: Rizos y textura"><div class="ph"><img src="img/trabajos/01.jpg" alt="Rizos y textura hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Rizos y textura</figcaption></figure>
+        <figure data-c="fade"><button type="button" class="open" id="ph-02" aria-label="Ampliar foto 2: Fade"><div class="ph"><img src="img/trabajos/02.jpg" alt="Fade hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Fade</figcaption></figure>
+        <figure data-c="clasico"><button type="button" class="open" id="ph-03" aria-label="Ampliar foto 3: Clásico y barba"><div class="ph"><img src="img/trabajos/03.jpg" alt="Clásico y barba hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Clásico y barba</figcaption></figure>
+        <figure data-c="rizos"><button type="button" class="open" id="ph-04" aria-label="Ampliar foto 4: Rizos y textura"><div class="ph"><img src="img/trabajos/04.jpg" alt="Rizos y textura hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Rizos y textura</figcaption></figure>
+        <figure data-c="rizos"><button type="button" class="open" id="ph-05" aria-label="Ampliar foto 5: Rizos y textura"><div class="ph"><img src="img/trabajos/05.jpg" alt="Rizos y textura hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Rizos y textura</figcaption></figure>
+        <figure data-c="color"><button type="button" class="open" id="ph-06" aria-label="Ampliar foto 6: Color"><div class="ph"><img src="img/trabajos/06.jpg" alt="Color hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Color</figcaption></figure>
+        <figure data-c="clasico"><button type="button" class="open" id="ph-07" aria-label="Ampliar foto 7: Clásico y barba"><div class="ph"><img src="img/trabajos/07.jpg" alt="Clásico y barba hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Clásico y barba</figcaption></figure>
+        <figure data-c="color"><button type="button" class="open" id="ph-08" aria-label="Ampliar foto 8: Color"><div class="ph"><img src="img/trabajos/08.jpg" alt="Color hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Color</figcaption></figure>
+        <figure data-c="fade"><button type="button" class="open" id="ph-09" aria-label="Ampliar foto 9: Fade"><div class="ph"><img src="img/trabajos/09.jpg" alt="Fade hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Fade</figcaption></figure>
+        <figure data-c="clasico"><button type="button" class="open" id="ph-10" aria-label="Ampliar foto 10: Clásico y barba"><div class="ph"><img src="img/trabajos/10.jpg" alt="Clásico y barba hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Clásico y barba</figcaption></figure>
+        <figure data-c="fade"><button type="button" class="open" id="ph-11" aria-label="Ampliar foto 11: Fade"><div class="ph"><img src="img/trabajos/11.jpg" alt="Fade hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Fade</figcaption></figure>
+        <figure data-c="diseno"><button type="button" class="open" id="ph-12" aria-label="Ampliar foto 12: Diseño"><div class="ph"><img src="img/trabajos/12.jpg" alt="Diseño hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Diseño</figcaption></figure>
+        <figure data-c="color"><button type="button" class="open" id="ph-13" aria-label="Ampliar foto 13: Color"><div class="ph"><img src="img/trabajos/13.jpg" alt="Color hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Color</figcaption></figure>
+        <figure data-c="rizos"><button type="button" class="open" id="ph-14" aria-label="Ampliar foto 14: Rizos y textura"><div class="ph"><img src="img/trabajos/14.jpg" alt="Rizos y textura hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Rizos y textura</figcaption></figure>
+        <figure data-c="rizos"><button type="button" class="open" id="ph-15" aria-label="Ampliar foto 15: Rizos y textura"><div class="ph"><img src="img/trabajos/15.jpg" alt="Rizos y textura hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Rizos y textura</figcaption></figure>
+        <figure data-c="rizos"><button type="button" class="open" id="ph-16" aria-label="Ampliar foto 16: Rizos y textura"><div class="ph"><img src="img/trabajos/16.jpg" alt="Rizos y textura hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Rizos y textura</figcaption></figure>
+        <figure data-c="fade"><button type="button" class="open" id="ph-17" aria-label="Ampliar foto 17: Fade"><div class="ph"><img src="img/trabajos/17.jpg" alt="Fade hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Fade</figcaption></figure>
+        <figure data-c="diseno"><button type="button" class="open" id="ph-18" aria-label="Ampliar foto 18: Diseño"><div class="ph"><img src="img/trabajos/18.jpg" alt="Diseño hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Diseño</figcaption></figure>
+        <figure data-c="diseno"><button type="button" class="open" id="ph-19" aria-label="Ampliar foto 19: Diseño"><div class="ph"><img src="img/trabajos/19.jpg" alt="Diseño hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Diseño</figcaption></figure>
+        <figure data-c="clasico"><button type="button" class="open" id="ph-20" aria-label="Ampliar foto 20: Clásico y barba"><div class="ph"><img src="img/trabajos/20.jpg" alt="Clásico y barba hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Clásico y barba</figcaption></figure>
+        <figure data-c="fade"><button type="button" class="open" id="ph-21" aria-label="Ampliar foto 21: Fade"><div class="ph"><img src="img/trabajos/21.jpg" alt="Fade hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Fade</figcaption></figure>
+        <figure data-c="clasico"><button type="button" class="open" id="ph-22" aria-label="Ampliar foto 22: Clásico y barba"><div class="ph"><img src="img/trabajos/22.jpg" alt="Clásico y barba hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Clásico y barba</figcaption></figure>
+        <figure data-c="diseno"><button type="button" class="open" id="ph-23" aria-label="Ampliar foto 23: Diseño"><div class="ph"><img src="img/trabajos/23.jpg" alt="Diseño hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Diseño</figcaption></figure>
+        <figure data-c="clasico"><button type="button" class="open" id="ph-24" aria-label="Ampliar foto 24: Clásico y barba"><div class="ph"><img src="img/trabajos/24.jpg" alt="Clásico y barba hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Clásico y barba</figcaption></figure>
+        <figure data-c="diseno"><button type="button" class="open" id="ph-25" aria-label="Ampliar foto 25: Diseño"><div class="ph"><img src="img/trabajos/25.jpg" alt="Diseño hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Diseño</figcaption></figure>
+        <figure data-c="clasico"><button type="button" class="open" id="ph-26" aria-label="Ampliar foto 26: Clásico y barba"><div class="ph"><img src="img/trabajos/26.jpg" alt="Clásico y barba hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Clásico y barba</figcaption></figure>
+        <figure data-c="diseno"><button type="button" class="open" id="ph-27" aria-label="Ampliar foto 27: Diseño"><div class="ph"><img src="img/trabajos/27.jpg" alt="Diseño hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Diseño</figcaption></figure>
+        <figure data-c="fade"><button type="button" class="open" id="ph-28" aria-label="Ampliar foto 28: Fade"><div class="ph"><img src="img/trabajos/28.jpg" alt="Fade hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Fade</figcaption></figure>
+        <figure data-c="fade"><button type="button" class="open" id="ph-29" aria-label="Ampliar foto 29: Fade"><div class="ph"><img src="img/trabajos/29.jpg" alt="Fade hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Fade</figcaption></figure>
+        <figure data-c="color"><button type="button" class="open" id="ph-30" aria-label="Ampliar foto 30: Color"><div class="ph"><img src="img/trabajos/30.jpg" alt="Color hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Color</figcaption></figure>
+        <figure data-c="fade"><button type="button" class="open" id="ph-31" aria-label="Ampliar foto 31: Fade"><div class="ph"><img src="img/trabajos/31.jpg" alt="Fade hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Fade</figcaption></figure>
+        <figure data-c="diseno"><button type="button" class="open" id="ph-32" aria-label="Ampliar foto 32: Diseño"><div class="ph"><img src="img/trabajos/32.jpg" alt="Diseño hecho en Barbershop Club 13" loading="lazy"></div></button><figcaption>Diseño</figcaption></figure>
       </div>
-      <p class="hint">Fotos con edición de la casa: tono cálido, más contraste, viñeta y grano.</p>
+      <p class="hint">Más trabajos en el perfil de Booksy. Las fotos llevan la edición de la casa: tono cálido, más contraste y viñeta.</p>
     </div>
   </section>
 
   <section id="club" class="band">
     <div class="wrap why">
-      <div class="ph"><img src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?auto=format&fit=crop&w=1000&q=80" alt="Herramientas de barbero: navaja, tijeras y brocha" loading="lazy"><div class="fallback">Herramientas<small>img/club.jpg</small></div></div>
+      <div class="ph"><img src="img/trabajos/28.jpg" alt="Cliente recién cortado en el local de Club 13" loading="lazy"></div>
       <div>
         <span class="eyebrow">Por qué Club 13</span>
         <h2 style="margin-top:14px">Un club, <em>no una cadena.</em></h2>
@@ -341,12 +373,17 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;
 </footer>
 <div class="pole" aria-hidden="true"></div>
 <div class="toast" id="toast" hidden>Copiado</div>
+<dialog class="lb" id="lb" aria-label="Foto ampliada">
+  <img id="lb-img" alt="">
+  <div class="bar"><button type="button" id="lb-prev" aria-label="Foto anterior">←</button><span id="lb-cap"></span><button type="button" id="lb-next" aria-label="Foto siguiente">→</button><button type="button" id="lb-close">Cerrar</button></div>
+</dialog>
+
 
 <script>
 (function(){
   // Imagen que no carga -> panel de marca con el nombre del archivo a sustituir
   document.querySelectorAll('.ph img').forEach(function(img){
-    function fail(){ img.closest('.ph').classList.add('noimg'); }
+    function fail(){ var fb = img.dataset.fallback; if (fb && img.getAttribute('src') !== fb) { img.src = fb; return; } img.closest('.ph').classList.add('noimg'); }
     if (img.complete && img.naturalWidth === 0) fail();
     img.addEventListener('error', fail);
   });
@@ -363,6 +400,36 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;
     });
   });
 
+
+  // Contadores de filtros
+  var figsAll = Array.prototype.slice.call(document.querySelectorAll('#grid figure'));
+  buttons.forEach(function(b){
+    var f = b.dataset.f, n = figsAll.filter(function(x){ return f === 'all' || x.dataset.c === f; }).length;
+    var s = b.querySelector('.n'); if (s) s.textContent = n;
+  });
+
+  // Visor de fotos
+  var lb = document.getElementById('lb'), lbImg = document.getElementById('lb-img'), lbCap = document.getElementById('lb-cap'), cur = 0;
+  function visible(){ return figsAll.filter(function(x){ return !x.hidden; }); }
+  function show(i){
+    var v = visible(); if (!v.length) return;
+    cur = (i + v.length) % v.length;
+    var img = v[cur].querySelector('img');
+    lbImg.src = img.src; lbImg.alt = img.alt;
+    lbCap.textContent = v[cur].querySelector('figcaption').textContent + ' · ' + (cur + 1) + '/' + v.length;
+  }
+  figsAll.forEach(function(fig){
+    fig.querySelector('.open').addEventListener('click', function(){
+      show(visible().indexOf(fig));
+      if (lb.showModal) lb.showModal(); else lb.setAttribute('open', '');
+    });
+  });
+  document.getElementById('lb-prev').addEventListener('click', function(){ show(cur - 1); });
+  document.getElementById('lb-next').addEventListener('click', function(){ show(cur + 1); });
+  document.getElementById('lb-close').addEventListener('click', function(){ lb.close ? lb.close() : lb.removeAttribute('open'); });
+  lb.addEventListener('click', function(e){ if (e.target === lb) lb.close(); });
+  lb.addEventListener('keydown', function(e){ if (e.key === 'ArrowLeft') show(cur - 1); if (e.key === 'ArrowRight') show(cur + 1); });
+
   // Marcar el día de hoy en el horario
   var today = new Date().getDay();
   var row = document.querySelector('#hours tr[data-d="' + today + '"]');
@@ -370,14 +437,14 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;
 
   // Copiar dirección / teléfono
   var toast = document.getElementById('toast'), t;
-  function show(msg){ toast.textContent = msg; toast.hidden = false; clearTimeout(t); t = setTimeout(function(){ toast.hidden = true; }, 1600); }
+  function showToast(msg){ toast.textContent = msg; toast.hidden = false; clearTimeout(t); t = setTimeout(function(){ toast.hidden = true; }, 1600); }
   document.querySelectorAll('.copy').forEach(function(btn){
     btn.addEventListener('click', function(){
       var el = document.getElementById(btn.dataset.copy);
       var text = el.textContent.trim();
-      var sel = function(){ var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r); show('Texto seleccionado: cópialo'); };
+      var sel = function(){ var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r); showToast('Texto seleccionado: cópialo'); };
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(function(){ show('Copiado'); }, sel);
+        navigator.clipboard.writeText(text).then(function(){ showToast('Copiado'); }, sel);
       } else sel();
     });
   });
