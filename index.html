@@ -1,0 +1,1109 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>La Argentina Estilista</title>
+<meta name="description" content="La Argentina Estilista: cortes, color, peinados de evento y novias, tratamientos. Elige día y hora y reserva por WhatsApp.">
+<meta name="theme-color" content="#7d1d3f">
+<meta property="og:title" content="La Argentina Estilista · Peluquería">
+<meta property="og:description" content="Cortes, color, peinados de evento y novias. Reserva por WhatsApp en un minuto.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;1,6..96,500&family=Manrope:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: carta de salón — bandas a todo el ancho, contenido en una columna de 1160px,
+   precios alineados como una carta impresa. Burdeos como único acento, latón para detalles. */
+:root {
+  --bg: #fbf7f6;
+  --surface: #ffffff;
+  --tint: #f5eaeb;
+  --ink: #22171c;
+  --muted: #6c5a61;
+  --line: #e8d9dc;
+  --accent: #7d1d3f;
+  --accent-hover: #63142f;
+  --on-accent: #ffffff;
+  --brass: #9a6c22;
+  --wa: #0f7a41;
+  --on-wa: #ffffff;
+  --band-ink: #22171c;
+  --band-ink-fg: #f6eef0;
+  --band-ink-muted: #c9b6bd;
+  --band-ink-line: rgba(246, 238, 240, .14);
+  --danger: #b3261e;
+  --ok: #1b7a43;
+
+  --display: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --body: "Manrope", "Segoe UI", system-ui, sans-serif;
+  --mono: "DM Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --radius: 14px;
+  --header-h: 68px;
+  --wrap: 1160px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #151013; --surface: #1f181c; --tint: #1b1418; --ink: #f4ebee; --muted: #b6a3aa;
+    --line: #3a2c32; --accent: #e88aa8; --accent-hover: #f3a7bf; --on-accent: #22171c;
+    --brass: #d9ad64; --wa: #3ccf7f; --on-wa: #0b2416; --band-ink: #0e0a0c; --danger: #ff8a80; --ok: #6fdc9a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #151013; --surface: #1f181c; --tint: #1b1418; --ink: #f4ebee; --muted: #b6a3aa;
+  --line: #3a2c32; --accent: #e88aa8; --accent-hover: #f3a7bf; --on-accent: #22171c;
+  --brass: #d9ad64; --wa: #3ccf7f; --on-wa: #0b2416; --band-ink: #0e0a0c; --danger: #ff8a80; --ok: #6fdc9a;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 12px); }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 400 16px/1.65 var(--body); -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 60; background: var(--bg);
+}
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h1, h2 { font-family: var(--display); font-weight: 500; letter-spacing: -.01em; line-height: 1.05; }
+h1 { font-size: clamp(2.6rem, 6.4vw, 5rem); }
+h1 em, h2 em { font-style: italic; color: var(--accent); }
+h2 { font-size: clamp(2rem, 4.2vw, 3.1rem); }
+h3 { font-size: 1.05rem; font-weight: 700; }
+p { margin: 0; }
+a { color: var(--accent); text-underline-offset: .2em; text-decoration-thickness: 1px; }
+::selection { background: color-mix(in srgb, var(--accent) 22%, transparent); color: var(--ink); }
+html { scrollbar-color: color-mix(in srgb, var(--muted) 55%, transparent) var(--bg); accent-color: var(--accent); }
+input, textarea { caret-color: var(--accent); }
+.footer a, .ig-link { padding-block: .35em; }
+
+.wrap {
+  width: 100%; max-width: calc(var(--wrap) + 64px); margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (min-width: 700px) { .wrap { padding-left: max(32px, env(safe-area-inset-left, 0px)); padding-right: max(32px, env(safe-area-inset-right, 0px)); } }
+
+.skip { position: absolute; left: -9999px; }
+.skip:focus { left: 16px; top: 16px; z-index: 100; background: var(--ink); color: var(--bg); padding: .5em 1em; border-radius: 8px; }
+:focus-visible { outline: 3px solid var(--brass); outline-offset: 3px; }
+.lead { font-size: 1.12rem; color: var(--muted); max-width: 46ch; }
+.note { font-size: .9rem; color: var(--muted); }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5em;
+  min-height: 48px; padding: 0 1.4em; border-radius: 999px;
+  background: var(--accent); color: var(--on-accent); border: 1.5px solid var(--accent);
+  font: 700 .95rem/1 var(--body); text-decoration: none; cursor: pointer;
+  transition: background .2s, border-color .2s, color .2s, transform .2s;
+}
+.btn:hover { background: var(--accent-hover); border-color: var(--accent-hover); transform: translateY(-1px); }
+.btn--line { background: transparent; color: var(--ink); border-color: var(--ink); }
+.btn--line:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.btn--sm { min-height: 40px; padding: 0 1.1em; font-size: .88rem; }
+.btn--wa { background: var(--wa); border-color: var(--wa); color: var(--on-wa); }
+.btn--wa:hover { background: var(--wa); border-color: var(--wa); filter: brightness(1.1); }
+.btn--light { background: var(--band-ink-fg); color: var(--band-ink); border-color: var(--band-ink-fg); }
+.btn--light:hover { background: var(--brass); border-color: var(--brass); color: var(--band-ink); }
+
+/* Header */
+.header {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(12px) saturate(150%);
+  border-bottom: 1px solid transparent; transition: border-color .2s;
+}
+.header.is-scrolled { border-color: var(--line); }
+.header__inner { display: flex; align-items: center; justify-content: space-between; height: var(--header-h); }
+.logo { font: 700 clamp(1.15rem, 5.2vw, 1.5rem)/1 var(--display); white-space: nowrap; color: var(--ink); text-decoration: none; display: flex; align-items: baseline; gap: .3em; }
+.logo span { font-style: italic; font-weight: 500; color: var(--accent); }
+.nav { display: flex; align-items: center; gap: 1.7rem; }
+.nav a:not(.btn) { color: var(--ink); text-decoration: none; font-weight: 500; font-size: .93rem; padding-block: .3em; border-bottom: 1.5px solid transparent; transition: border-color .2s; }
+.nav a:not(.btn):hover, .nav a.is-active { border-color: var(--accent); }
+.nav-toggle { display: none; width: 44px; height: 44px; border: 0; background: none; cursor: pointer; position: relative; }
+.nav-toggle span { position: absolute; left: 11px; right: 11px; height: 2px; background: var(--ink); transition: transform .25s; }
+.nav-toggle span:first-child { top: 17px; } .nav-toggle span:last-child { top: 25px; }
+.nav-toggle[aria-expanded="true"] span:first-child { transform: translateY(4px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:last-child { transform: translateY(-4px) rotate(-45deg); }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; padding-block: clamp(3rem, 7vw, 5.5rem) clamp(3rem, 6vw, 5rem); border-bottom: 1px solid var(--line); }
+.hero__strands { position: absolute; inset: 0 0 0 auto; width: 58%; height: 100%; pointer-events: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 35%); mask-image: linear-gradient(90deg, transparent, #000 35%); }
+.hero__inner { position: relative; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: end; }
+.hero__copy { display: grid; gap: 1.4rem; min-width: 0; }
+.hero__cta { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: .4rem; }
+.hero__where { font-size: .95rem; font-weight: 500; color: var(--ink); display: flex; align-items: center; gap: .6em; }
+.hero__where::before { content: ""; width: 2rem; height: 1px; background: var(--brass); flex: none; }
+.hero__side { display: grid; min-width: 0; }
+.hero__photo { margin: 0; aspect-ratio: 4 / 5; max-width: 100%; overflow: hidden; border-radius: var(--radius); background: var(--tint); }
+.hero__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero--photo .hero__inner { align-items: center; }
+.hero--photo .ticket { margin: -11rem 0 0 -2.5rem; position: relative; max-width: 340px; }
+.hero--photo .ticket__facts, .hero--photo .ticket__facts + hr, .hero--photo .ticket__small { display: none; }
+.hero--photo .ticket__big { font-size: 1.4rem; }
+.ticket__where { font-size: .92rem; color: var(--muted); }
+.ticket__wa { justify-self: start; margin-top: .25rem; }
+
+.ticket {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 1.5rem; display: grid; gap: .55rem;
+  box-shadow: 0 24px 50px -30px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+.ticket__top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.ticket__label { font: 600 .72rem/1.2 var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.ticket__big { font: 500 1.7rem/1.15 var(--display); }
+.ticket__small { color: var(--muted); font-size: .92rem; }
+.ticket hr { border: 0; border-top: 1px dashed var(--line); margin: .6rem 0 .3rem; width: 100%; }
+.ticket__facts { margin: 0; display: grid; gap: .35rem; }
+.ticket__facts div { display: flex; justify-content: space-between; gap: 1rem; font-size: .92rem; }
+.ticket__facts dt { color: var(--muted); }
+.ticket__facts dd { margin: 0; font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+.status { display: inline-flex; align-items: center; gap: .45em; font: 600 .78rem/1 var(--body); padding: .45em .75em; border-radius: 999px; background: var(--tint); color: var(--muted); white-space: nowrap; }
+.status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.status.is-open { color: var(--ok); background: color-mix(in srgb, var(--ok) 12%, transparent); }
+.status.is-closed { color: var(--danger); background: color-mix(in srgb, var(--danger) 12%, transparent); }
+.status:empty { display: none; }
+
+/* Bands */
+.band { padding-block: clamp(4rem, 8vw, 6.5rem); }
+.band--tint { background: var(--tint); }
+.band--ink { background: var(--band-ink); color: var(--band-ink-fg); }
+.head { display: grid; gap: .9rem; max-width: 640px; margin-bottom: 2.6rem; }
+.head > p { color: var(--muted); }
+
+/* Menu / prices */
+.chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.6rem; }
+.chip {
+  font: 500 .88rem/1 var(--body); min-height: 40px; padding: 0 1.1em; border-radius: 999px; cursor: pointer;
+  background: transparent; color: var(--ink); border: 1px solid var(--line); transition: all .18s;
+}
+.chip:hover { border-color: var(--ink); }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.menu { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 3.5rem; }
+.menu li { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: baseline; gap: 1rem; padding-block: 1.05rem; border-bottom: 1px solid var(--line); }
+.menu li[hidden] { display: none; }
+.menu__name { min-width: 0; }
+.menu__name p { color: var(--muted); font-size: .9rem; }
+.menu__time { font: 400 .8rem/1 var(--mono); color: var(--muted); white-space: nowrap; }
+.menu__price { font: 500 1rem/1 var(--mono); font-variant-numeric: tabular-nums; color: var(--accent); white-space: nowrap; min-width: 5.5ch; text-align: right; }
+
+/* Steps */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; counter-reset: s; }
+.steps li { counter-increment: s; display: grid; gap: .6rem; align-content: start; padding-top: 1.2rem; border-top: 1.5px solid var(--ink); }
+.steps li::before { content: "Paso " counter(s); font: 600 .72rem/1.2 var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--brass); }
+.steps h3 { font: 500 1.5rem/1.1 var(--display); }
+.steps p { color: var(--muted); font-size: .95rem; }
+
+/* Gallery carousel */
+.head--row { max-width: none; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 1rem 2rem; }
+.head--row > div { display: grid; gap: .9rem; }
+.ig-link { font-weight: 700; text-decoration: none; border-bottom: 1.5px solid currentColor; padding-bottom: .15em; }
+.ig-link span { font-family: var(--mono); font-weight: 500; }
+.carousel { display: grid; gap: 1.2rem; min-width: 0; }
+.carousel__track {
+  display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 2 * .9rem) / 3);
+  gap: .9rem; overflow-x: auto; scroll-snap-type: x mandatory;
+  scrollbar-width: none; overscroll-behavior-x: contain; border-radius: var(--radius);
+}
+.carousel__track::-webkit-scrollbar { display: none; }
+.slide { margin: 0; scroll-snap-align: start; position: relative; aspect-ratio: 4 / 5; max-width: 100%; overflow: hidden; border-radius: var(--radius); background: var(--tint); isolation: isolate; }
+.slide img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s ease; }
+.slide:hover img { transform: scale(1.04); }
+.slide--empty::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background:
+    repeating-linear-gradient(115deg, transparent 0 9px, color-mix(in srgb, var(--surface) 22%, transparent) 9px 10px),
+    linear-gradient(160deg, var(--t1), var(--t2));
+}
+.slide[data-tone="1"] { --t1: #e7c08c; --t2: #8a4a2a; }
+.slide[data-tone="2"] { --t1: #f1e1d6; --t2: #b9967d; }
+.slide[data-tone="3"] { --t1: #4a3b3f; --t2: #1f1619; }
+.slide[data-tone="4"] { --t1: #c9954f; --t2: #5b3420; }
+.slide[data-tone="5"] { --t1: #6f6266; --t2: #2a2124; }
+.slide[data-tone="6"] { --t1: #b77a5d; --t2: #7d1d3f; }
+.slide figcaption {
+  position: absolute; left: .8rem; bottom: .8rem; max-width: calc(100% - 1.6rem);
+  background: var(--surface); color: var(--ink); padding: .5em .85em; border-radius: 10px; font-size: .85rem;
+}
+.carousel__bar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.carousel__dots { display: flex; flex-wrap: wrap; }
+.carousel__dots button { width: 28px; height: 28px; border: 0; background: none; padding: 0; cursor: pointer; display: grid; place-items: center; }
+.carousel__dots button::before { content: ""; width: 8px; height: 8px; border-radius: 999px; background: var(--line); transition: width .25s, background .25s; }
+.carousel__dots button[aria-current="true"]::before { width: 20px; background: var(--accent); }
+.carousel__nav { display: flex; gap: .5rem; }
+.round {
+  width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface);
+  color: var(--ink); font: 500 1rem/1 var(--body); cursor: pointer; transition: border-color .2s;
+}
+.round:hover { border-color: var(--ink); }
+.round { display: grid; place-items: center; }
+.ico { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+.ico--play { fill: currentColor; stroke-width: 1.25; }
+#carousel-play .ico--play, #carousel-play.is-paused .ico--pause { display: none; }
+#carousel-play.is-paused .ico--play { display: block; }
+.ig-link { display: inline-flex; align-items: center; gap: .4em; }
+
+/* Quotes */
+.quotes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; }
+.quotes blockquote { margin: 0; padding: 1.8rem; background: var(--surface); border-radius: var(--radius); display: grid; gap: 1.2rem; align-content: space-between; }
+.quotes blockquote p { font: italic 500 1.25rem/1.4 var(--display); }
+.quotes footer { font: 500 .85rem/1.3 var(--body); color: var(--muted); }
+
+/* Booking */
+.booking { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+.booking__intro { display: grid; gap: 1rem; position: sticky; top: calc(var(--header-h) + 2rem + env(safe-area-inset-top, 0px)); }
+.booking__intro > p { color: var(--muted); }
+.phone { font-family: var(--mono); font-variant-numeric: tabular-nums; color: var(--ink); user-select: all; }
+.band--ink .phone { color: var(--band-ink-fg); }
+.copy { font: 600 .78rem/1 var(--body); min-height: 32px; padding: 0 .8em; border-radius: 6px; border: 1px solid currentColor; background: transparent; color: inherit; cursor: pointer; margin-left: .4em; opacity: .8; }
+.copy:hover { opacity: 1; }
+
+.form { background: var(--surface); border: 1px solid var(--line); border-radius: calc(var(--radius) + 4px); padding: clamp(1.25rem, 3vw, 2rem); display: grid; gap: 1.3rem; min-width: 0; }
+.field { display: grid; gap: .5rem; border: 0; padding: 0; margin: 0; min-width: 0; }
+.field label, .field legend { font-weight: 700; font-size: .9rem; padding: 0; margin-bottom: .1rem; }
+.opt { font-weight: 400; color: var(--muted); }
+.form input, .form select, .form textarea {
+  font: inherit; width: 100%; padding: .8em .95em; border-radius: 10px;
+  background: var(--bg); color: var(--ink); border: 1px solid var(--line);
+}
+.form input:focus, .form select:focus, .form textarea:focus { border-color: var(--accent); outline: 2px solid color-mix(in srgb, var(--accent) 30%, transparent); outline-offset: 0; }
+.form :is(input, select)[aria-invalid="true"] { border-color: var(--danger); }
+.pick { display: flex; flex-wrap: wrap; gap: .45rem; }
+.pick.is-invalid .slot { border-color: var(--danger); }
+.slot {
+  font: 500 .85rem/1.15 var(--body); min-height: 44px; padding: .5em .8em; border-radius: 10px; cursor: pointer;
+  background: var(--bg); color: var(--ink); border: 1px solid var(--line); display: grid; justify-items: center; transition: all .15s;
+}
+.slot small { font: 600 .68rem/1 var(--body); color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+.slot:hover { border-color: var(--ink); }
+.slot[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.slot[aria-pressed="true"] small { color: inherit; opacity: .85; }
+.slot--time { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.hint { color: var(--muted); font-size: .9rem; }
+.preview { background: var(--tint); border-radius: 12px; padding: 1rem 1.1rem; display: grid; gap: .4rem; }
+.preview__label { font: 600 .72rem/1.2 var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.preview__text { white-space: pre-wrap; overflow-wrap: anywhere; font-size: .95rem; }
+.form__error { color: var(--danger); font-size: .9rem; font-weight: 500; }
+.form__actions { display: flex; flex-wrap: wrap; gap: .7rem; }
+.form__actions .btn { flex: 1 1 200px; }
+
+/* FAQ */
+.faq { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+.faq .head { margin: 0; }
+.faq__list { border-top: 1px solid var(--line); }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 1rem; padding-block: 1.15rem; font-weight: 700; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: ""; flex: none; width: 14px; height: 14px; margin-top: .35em; transition: transform .25s cubic-bezier(.16, 1, .3, 1);
+  background: linear-gradient(var(--accent), var(--accent)) center / 100% 1.5px no-repeat, linear-gradient(var(--accent), var(--accent)) center / 1.5px 100% no-repeat;
+}
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { padding-bottom: 1.2rem; color: var(--muted); max-width: 60ch; }
+
+/* Contact */
+.contact { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4.5rem); }
+.contact__info { display: grid; gap: 1.2rem; align-content: start; justify-items: start; }
+.contact__list { margin: .4rem 0 .6rem; display: grid; gap: 1rem; }
+.contact__list dt { font: 600 .72rem/1.2 var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--band-ink-muted); margin-bottom: .35rem; }
+.contact__list dd { margin: 0; font-size: 1.05rem; }
+.band--ink a:not(.btn) { color: var(--band-ink-fg); }
+.hours { border: 1px solid var(--band-ink-line); border-radius: var(--radius); padding: clamp(1.25rem, 3vw, 2rem); min-width: 0; }
+.hours__top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: .8rem; }
+.hours h3 { font: 500 1.6rem/1 var(--display); }
+.hours .status { background: rgba(255,255,255,.08); }
+.hours .status.is-open { color: #7fe0a6; } .hours .status.is-closed { color: #ff9c94; }
+.hours dl { margin: 0; }
+.hours dl div { display: flex; justify-content: space-between; gap: 1rem; padding: .7rem .6rem; border-bottom: 1px solid var(--band-ink-line); border-radius: 8px; }
+.hours dl div:last-child { border-bottom: 0; }
+.hours dl div.is-today { background: rgba(255,255,255,.07); border-color: transparent; }
+.hours dt { font-weight: 500; }
+.hours dd { margin: 0; text-align: right; font-family: var(--mono); font-size: .9rem; font-variant-numeric: tabular-nums; color: var(--band-ink-muted); }
+.hours .is-today dd { color: var(--band-ink-fg); }
+
+/* Footer */
+.footer { background: var(--band-ink); color: var(--band-ink-muted); border-top: 1px solid var(--band-ink-line); font-size: .88rem; }
+.footer__inner { display: flex; justify-content: space-between; gap: 1rem; padding-block: 1.4rem; }
+.footer a { color: var(--band-ink-muted); text-decoration: none; }
+.footer a:hover { color: var(--band-ink-fg); }
+
+/* Mobile dock */
+.dock { display: none; }
+
+/* Toast */
+.toast {
+  position: fixed; left: 50%; transform: translateX(-50%); z-index: 80;
+  bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+  background: var(--ink); color: var(--bg); padding: .7em 1.1em; border-radius: 10px; font-size: .9rem; font-weight: 500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .hero__inner, .booking, .faq, .contact { grid-template-columns: minmax(0, 1fr); }
+  /* En pantallas estrechas las líneas solo enmarcan la tarjeta, nunca van detrás del texto */
+  .hero__strands { inset: auto 0 0 0; width: 100%; height: 48%; opacity: .55;
+    -webkit-mask-image: linear-gradient(180deg, transparent, #000 40%); mask-image: linear-gradient(180deg, transparent, #000 40%); }
+  .ticket { max-width: 460px; }
+  .hero--photo .ticket { margin: -4rem 0 0 1rem; max-width: calc(100% - 2rem); }
+  .hero__photo { max-width: 460px; }
+  .booking__intro { position: static; }
+  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .quotes { grid-template-columns: minmax(0, 1fr); }
+  .menu { grid-template-columns: minmax(0, 1fr); }
+  .carousel__track { grid-auto-columns: calc((100% - .9rem) / 2); }
+}
+@media (max-width: 760px) {
+  .nav-toggle { display: block; }
+  .nav {
+    position: absolute; top: var(--header-h); left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: var(--bg); border-bottom: 1px solid var(--line);
+    padding: .4rem max(16px, env(safe-area-inset-right, 0px)) 1.2rem max(16px, env(safe-area-inset-left, 0px));
+    opacity: 0; visibility: hidden; transform: translateY(-6px); transition: opacity .2s, transform .2s, visibility .2s;
+  }
+  .nav.is-open { opacity: 1; visibility: visible; transform: none; }
+  .nav a:not(.btn) { padding-block: .95rem; border-bottom: 1px solid var(--line); }
+  .nav .btn { margin-top: 1rem; }
+  .steps { grid-template-columns: minmax(0, 1fr); gap: 1.6rem; }
+  .carousel__track { grid-auto-columns: 80%; }
+  .menu li { grid-template-columns: minmax(0, 1fr) auto; }
+  .menu__time { grid-column: 1; grid-row: 2; }
+  .menu__price { grid-column: 2; grid-row: 1; }
+  .dock {
+    display: flex; gap: .6rem; position: fixed; left: 0; right: 0; bottom: 0; z-index: 55;
+    padding: .7rem max(16px, env(safe-area-inset-right, 0px)) calc(.7rem + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+    background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(12px);
+    border-top: 1px solid var(--line);
+    transform: translateY(110%); transition: transform .35s cubic-bezier(.16, 1, .3, 1);
+  }
+  .dock.is-shown { transform: none; }
+  .dock .btn { flex: 1; }
+  .hero__secondary { display: none; }
+  .footer { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<header class="header" id="top">
+  <div class="wrap header__inner">
+    <a href="#top" class="logo" aria-label="La Argentina Estilista, inicio">La Argentina<span>Estilista</span></a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú"><span></span><span></span></button>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#metodo">Cómo trabajamos</a>
+      <a href="#galeria">Trabajos</a>
+      <a href="#faq">Preguntas</a>
+      <a href="#contacto">Contacto</a>
+      <a href="#reservar" class="btn btn--sm">Reservar</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <canvas class="hero__strands" id="strands" aria-hidden="true"></canvas>
+    <div class="wrap hero__inner">
+      <div class="hero__copy">
+        <h1>Que te reconozcas <em>en el espejo.</em></h1>
+        <p class="lead">Cortes pensados para cómo te peinas de verdad, color que envejece bien y recogidos que llegan enteros al final de la fiesta.</p>
+        <p class="hero__where"><span data-hero-where>Peluquería de mujer y hombre</span></p>
+        <div class="hero__cta">
+          <a href="#reservar" class="btn">Elegir día y hora</a>
+          <a href="#servicios" class="btn btn--line hero__secondary">Ver carta de precios</a>
+        </div>
+      </div>
+
+      <div class="hero__side">
+      <!-- Foto de portada: se configura en script.js → CONFIG.portada -->
+      <figure class="hero__photo" id="hero-photo" hidden></figure>
+      <aside class="ticket" aria-label="Estado del salón">
+        <div class="ticket__top">
+          <span class="ticket__label">Hoy en el salón</span>
+          <span class="status" id="hero-status">Horario</span>
+        </div>
+        <p class="ticket__big" id="hero-next">Martes a sábado</p>
+        <p class="ticket__small" id="hero-sub">Mira el horario completo más abajo.</p>
+        <hr>
+        <dl class="ticket__facts">
+          <div><dt>Corte mujer</dt><dd>desde 25 €</dd></div>
+          <div><dt>Balayage</dt><dd>desde 60 €</dd></div>
+          <div><dt>Peinado evento</dt><dd>desde 35 €</dd></div>
+        </dl>
+        <hr>
+        <p class="ticket__where" data-address-text>Calle Ejemplo 1, Ciudad</p>
+        <a href="#" class="btn btn--wa btn--sm ticket__wa" data-whatsapp-link target="_blank" rel="noopener">Pedir cita por WhatsApp</a>
+      </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="band" id="servicios">
+    <div class="wrap">
+      <header class="head">
+        <h2>Precios claros antes de empezar</h2>
+        <p>Los precios son de partida. Pelo largo o muy denso puede subir algo; siempre te lo decimos antes de coger las tijeras. La duración es aproximada.</p>
+      </header>
+
+      <div class="chips" role="group" aria-label="Filtrar servicios">
+        <button type="button" class="chip" aria-pressed="true" data-filter="all">Todo</button>
+        <button type="button" class="chip" aria-pressed="false" data-filter="corte">Corte</button>
+        <button type="button" class="chip" aria-pressed="false" data-filter="color">Color</button>
+        <button type="button" class="chip" aria-pressed="false" data-filter="peinado">Peinados</button>
+        <button type="button" class="chip" aria-pressed="false" data-filter="tratamiento">Tratamientos</button>
+      </div>
+
+      <!-- Cambia nombre, descripción, duración y precio de cada servicio aquí -->
+      <ul class="menu" id="menu">
+        <li data-cat="corte"><div class="menu__name"><h3>Corte mujer</h3><p>Lavado, corte y secado con forma.</p></div><span class="menu__time">45 min</span><span class="menu__price">25 €</span></li>
+        <li data-cat="corte"><div class="menu__name"><h3>Corte hombre</h3><p>Tijera o máquina, degradado y acabado.</p></div><span class="menu__time">30 min</span><span class="menu__price">14 €</span></li>
+        <li data-cat="corte"><div class="menu__name"><h3>Corte infantil</h3><p>Hasta 12 años.</p></div><span class="menu__time">20 min</span><span class="menu__price">10 €</span></li>
+        <li data-cat="color"><div class="menu__name"><h3>Tinte de raíz</h3><p>Color uniforme y cobertura de canas.</p></div><span class="menu__time">1 h 30</span><span class="menu__price">30 €</span></li>
+        <li data-cat="color"><div class="menu__name"><h3>Mechas o balayage</h3><p>Aclarado a mano alzada, natural y luminoso.</p></div><span class="menu__time">2 h 30</span><span class="menu__price">60 €</span></li>
+        <li data-cat="color"><div class="menu__name"><h3>Matiz o gloss</h3><p>Corrige tonos amarillos o naranjas y da brillo.</p></div><span class="menu__time">30 min</span><span class="menu__price">18 €</span></li>
+        <li data-cat="peinado"><div class="menu__name"><h3>Peinado de evento</h3><p>Recogido, semirrecogido u ondas.</p></div><span class="menu__time">1 h</span><span class="menu__price">35 €</span></li>
+        <li data-cat="peinado"><div class="menu__name"><h3>Novia</h3><p>Prueba previa y peinado el día de la boda.</p></div><span class="menu__time">—</span><span class="menu__price">consultar</span></li>
+        <li data-cat="peinado"><div class="menu__name"><h3>Trenzas</h3><p>De raíz, boxeadoras, espiga.</p></div><span class="menu__time">30 min</span><span class="menu__price">15 €</span></li>
+        <li data-cat="tratamiento"><div class="menu__name"><h3>Hidratación profunda</h3><p>Para pelo seco, poroso o castigado por el sol.</p></div><span class="menu__time">30 min</span><span class="menu__price">20 €</span></li>
+        <li data-cat="tratamiento"><div class="menu__name"><h3>Alisado de keratina</h3><p>Sin encrespamiento durante 3 a 5 meses.</p></div><span class="menu__time">2 h 30</span><span class="menu__price">90 €</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- MÉTODO -->
+  <section class="band band--tint" id="metodo">
+    <div class="wrap">
+      <header class="head">
+        <h2>Una cita, cuatro pasos</h2>
+      </header>
+      <ol class="steps">
+        <li><h3>Hablamos</h3><p>Nos cuentas cómo te peinas cada mañana, cuánto tiempo le dedicas y qué no quieres volver a ver.</p></li>
+        <li><h3>Miramos tu pelo</h3><p>Grosor, densidad, remolinos y estado de la fibra. Con eso sabemos qué corte o color va a funcionar.</p></li>
+        <li><h3>Trabajamos</h3><p>Sin prisas y explicándote lo que hacemos, para que puedas repetirlo en casa.</p></li>
+        <li><h3>Te llevas el truco</h3><p>Cómo secarlo, qué producto usar y cuándo volver para mantenerlo.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section class="band" id="galeria">
+    <div class="wrap">
+      <header class="head head--row">
+        <h2>Del sillón a la calle</h2>
+        <a class="ig-link" href="#" data-instagram-link target="_blank" rel="noopener">Más en Instagram <span data-instagram-text>@leo_corizzo</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </header>
+
+      <!-- Las fotos se configuran en script.js → CONFIG.fotos -->
+      <div class="carousel" id="carousel" aria-roledescription="carrusel" aria-label="Trabajos de La Argentina Estilista">
+        <div class="carousel__track" id="carousel-track" tabindex="0"></div>
+        <div class="carousel__bar">
+          <div class="carousel__dots" id="carousel-dots"></div>
+          <div class="carousel__nav">
+            <button type="button" class="round" id="carousel-play" aria-label="Pausar el pase de fotos"><svg class="ico ico--pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg><svg class="ico ico--play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg></button>
+            <button type="button" class="round" id="carousel-prev" aria-label="Foto anterior"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+            <button type="button" class="round" id="carousel-next" aria-label="Foto siguiente"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPINIONES -->
+  <section class="band band--tint" id="opiniones">
+    <div class="wrap">
+      <header class="head">
+        <h2>Lo que cuentan al salir</h2>
+        <p class="note">Textos de ejemplo: sustitúyelos por reseñas reales de tus clientes.</p>
+      </header>
+      <div class="quotes">
+        <blockquote><p>Por fin alguien que entiende lo que pido. Salí con el corte que llevaba años buscando.</p><footer>Clienta de ejemplo · corte</footer></blockquote>
+        <blockquote><p>El recogido aguantó hasta las cinco de la mañana. En las fotos parezco yo, pero mejor.</p><footer>Novia de ejemplo · boda</footer></blockquote>
+        <blockquote><p>El balayage quedó natural y a los tres meses sigue bonito. Repetiré.</p><footer>Cliente de ejemplo · color</footer></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVAR -->
+  <section class="band" id="reservar">
+    <div class="wrap booking">
+      <div class="booking__intro">
+        <h2>Elige día y hora</h2>
+        <p>Marca lo que te viene bien y te preparamos el mensaje. Lo envías por WhatsApp y te confirmamos el hueco.</p>
+        <p class="phone-line">¿Prefieres llamar? <span class="phone" data-phone-text>600 000 000</span>
+          <button type="button" class="copy" data-copy-phone>Copiar</button></p>
+      </div>
+
+      <form class="form" id="booking-form" novalidate>
+        <div class="field">
+          <label for="f-nombre">Tu nombre</label>
+          <input id="f-nombre" name="nombre" autocomplete="given-name" placeholder="Ej. Marta" maxlength="60" required>
+        </div>
+        <div class="field">
+          <label for="f-servicio">Servicio</label>
+          <select id="f-servicio" name="servicio" required><option value="">Elige un servicio</option></select>
+        </div>
+        <fieldset class="field">
+          <legend>Día</legend>
+          <div class="pick" id="f-dias"></div>
+        </fieldset>
+        <fieldset class="field">
+          <legend>Hora preferida</legend>
+          <div class="pick" id="f-horas"><p class="hint">Elige primero un día.</p></div>
+        </fieldset>
+        <div class="field">
+          <label for="f-notas">Algo que debamos saber <span class="opt">(opcional)</span></label>
+          <textarea id="f-notas" name="notas" rows="2" maxlength="500" placeholder="Largo del pelo, color actual, foto de referencia que nos enviarás…"></textarea>
+        </div>
+
+        <div class="preview">
+          <p class="preview__label">Tu mensaje</p>
+          <p class="preview__text" id="f-preview">Rellena los datos de arriba.</p>
+        </div>
+        <p class="form__error" id="f-error" role="alert" hidden></p>
+        <div class="form__actions">
+          <a class="btn btn--wa" id="f-send" href="#" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+          <button type="button" class="btn btn--line" id="f-copy">Copiar mensaje</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="band band--tint" id="faq">
+    <div class="wrap faq">
+      <header class="head">
+        <h2>Antes de venir</h2>
+      </header>
+      <div class="faq__list">
+        <details><summary>¿Tengo que venir con el pelo lavado?</summary><p>No. Todos los servicios incluyen lavado. Para color, mejor no lavarlo el mismo día: el cuero cabelludo lo agradece.</p></details>
+        <details><summary>¿Cuánto antes reservo para una boda?</summary><p>Lo ideal son dos o tres meses, con la prueba unas semanas antes. En temporada alta (mayo a septiembre) los sábados se llenan pronto.</p></details>
+        <details><summary>¿Puedo traer una foto de referencia?</summary><p>Sí, y ayuda mucho. Envíala por WhatsApp al reservar y la vemos juntos el día de la cita.</p></details>
+        <details><summary>¿Y si llego tarde o no puedo venir?</summary><p>Avísanos cuanto antes por WhatsApp. Si es con tiempo, movemos la cita sin problema.</p></details>
+        <details><summary>¿Cómo se paga?</summary><p>En efectivo o con tarjeta al terminar.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="band band--ink" id="contacto">
+    <div class="wrap contact">
+      <div class="contact__info">
+        <h2>Ven a vernos</h2>
+        <dl class="contact__list">
+          <div><dt>Dirección</dt><dd data-address-text>Calle Ejemplo 1, Ciudad</dd></div>
+          <div><dt>Teléfono y WhatsApp</dt><dd><span class="phone" data-phone-text>600 000 000</span> <button type="button" class="copy" data-copy-phone>Copiar</button></dd></div>
+          <div><dt>Instagram</dt><dd><a href="#" data-instagram-link target="_blank" rel="noopener" data-instagram-text>@leo_corizzo</a></dd></div>
+        </dl>
+        <a href="#" class="btn btn--light" data-map-link target="_blank" rel="noopener">Cómo llegar</a>
+      </div>
+      <div class="hours">
+        <div class="hours__top"><h3>Horario</h3><span class="status" id="hours-status"></span></div>
+        <dl id="hours-list"></dl>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <p>© <span data-year>2026</span> La Argentina Estilista</p>
+    <a href="#top">Volver arriba</a>
+  </div>
+</footer>
+
+<div class="dock">
+  <a href="#reservar" class="btn">Reservar</a>
+  <a href="#" class="btn btn--wa" data-whatsapp-link target="_blank" rel="noopener">WhatsApp</a>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script>
+/* =========================================================
+   DATOS DEL NEGOCIO — cambia estos valores por los reales
+   ========================================================= */
+const CONFIG = {
+  // Número con prefijo de país, sin espacios ni "+" (España: 34 + número)
+  whatsapp: "34600000000",
+  telefono: "600 000 000",
+  direccion: "Calle Ejemplo 1, Ciudad",
+  // Barrio o ciudad, para la frase de la portada ("Peluquería de mujer y hombre en …")
+  ciudad: "",
+  // Foto grande de la portada. Vacío = se ven las líneas animadas.
+  portada: { src: "", alt: "" },
+  instagram: "https://www.instagram.com/leo_corizzo/",
+  instagramTexto: "@leo_corizzo",
+  // Fotos del carrusel: pon los archivos en la carpeta img/ y añádelos aquí.
+  // Mientras "src" esté vacío se muestra un hueco de color con el texto.
+  fotos: [
+    { src: "", texto: "Balayage miel sobre castaño" },
+    { src: "", texto: "Recogido de novia" },
+    { src: "", texto: "Bob a la mandíbula" },
+    { src: "", texto: "Ondas al agua" },
+    { src: "", texto: "Degradado bajo" },
+    { src: "", texto: "Trenzas de raíz" },
+  ],
+  segundosPorFoto: 4,
+  // Horario. 0 = domingo, 1 = lunes … 6 = sábado. [] = cerrado
+  horario: {
+    1: [],
+    2: [["10:00", "14:00"], ["16:30", "20:30"]],
+    3: [["10:00", "14:00"], ["16:30", "20:30"]],
+    4: [["10:00", "14:00"], ["16:30", "20:30"]],
+    5: [["10:00", "14:00"], ["16:30", "20:30"]],
+    6: [["09:30", "14:30"]],
+    0: [],
+  },
+  diasReservables: 14, // cuántos días hacia delante se pueden elegir
+};
+
+/* ---------- utilidades ---------- */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const DIAS = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
+const DIAS_CORTO = ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"];
+const MESES_LARGO = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+const MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+const toMin = (t) => { const [h, m] = t.split(":").map(Number); return h * 60 + m; };
+const toHHMM = (m) => `${String(Math.floor(m / 60)).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`;
+const tramosDe = (d) => CONFIG.horario[d.getDay()] || [];
+const sameDay = (a, b) => a.toDateString() === b.toDateString();
+const waLink = (txt) => `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(txt)}`;
+
+const setInvalid = (el, bad) => (bad ? el.setAttribute("aria-invalid", "true") : el.removeAttribute("aria-invalid"));
+
+const toastEl = $("#toast");
+let toastTimer;
+function toast(msg) {
+  toastEl.textContent = msg;
+  toastEl.hidden = false;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => (toastEl.hidden = true), 2200);
+}
+async function copyText(text, okMsg) {
+  try {
+    await navigator.clipboard.writeText(text);
+    toast(okMsg);
+  } catch {
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch {}
+    ta.remove();
+    toast(ok ? okMsg : "No se pudo copiar. Selecciona el texto y cópialo a mano.");
+  }
+}
+
+/* ---------- datos de contacto ---------- */
+$$("[data-phone-text]").forEach((el) => (el.textContent = CONFIG.telefono));
+$$("[data-address-text]").forEach((el) => (el.textContent = CONFIG.direccion));
+$$("[data-instagram-link]").forEach((a) => (a.href = CONFIG.instagram));
+$$("[data-instagram-text]").forEach((el) => (el.textContent = CONFIG.instagramTexto));
+$$("[data-whatsapp-link]").forEach((a) => (a.href = waLink("¡Hola! Me gustaría pedir cita.")));
+$$("[data-map-link]").forEach((a) => (a.href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(CONFIG.direccion)));
+$$("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
+$$("[data-copy-phone]").forEach((b) => b.addEventListener("click", () => copyText(CONFIG.telefono, "Teléfono copiado")));
+
+/* ---------- portada: ubicación, foto y barra móvil ---------- */
+if (CONFIG.ciudad) $$("[data-hero-where]").forEach((el) => (el.textContent = `Peluquería de mujer y hombre en ${CONFIG.ciudad}`));
+if (CONFIG.portada && CONFIG.portada.src) {
+  const fig = $("#hero-photo");
+  const img = new Image();
+  img.src = CONFIG.portada.src;
+  img.alt = CONFIG.portada.alt || "Trabajo de La Argentina Estilista";
+  img.decoding = "async";
+  img.fetchPriority = "high";
+  fig.appendChild(img);
+  fig.hidden = false;
+  $("#hero").classList.add("hero--photo");
+}
+const dock = $(".dock");
+new IntersectionObserver(([e]) => dock.classList.toggle("is-shown", !e.isIntersecting), { threshold: 0.15 }).observe($("#hero"));
+
+/* ---------- cabecera y menú ---------- */
+const header = $(".header");
+const onScroll = () => header.classList.toggle("is-scrolled", scrollY > 8);
+addEventListener("scroll", onScroll, { passive: true });
+onScroll();
+
+const toggle = $("#nav-toggle");
+const nav = $("#nav");
+const setMenu = (open) => {
+  toggle.setAttribute("aria-expanded", String(open));
+  toggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+  nav.classList.toggle("is-open", open);
+};
+toggle.addEventListener("click", () => setMenu(toggle.getAttribute("aria-expanded") !== "true"));
+$$("a", nav).forEach((a) => a.addEventListener("click", () => setMenu(false)));
+addEventListener("keydown", (e) => e.key === "Escape" && setMenu(false));
+
+const navLinks = $$('a[href^="#"]:not(.btn)', nav);
+const spy = new IntersectionObserver((entries) => {
+  entries.forEach((en) => {
+    if (en.isIntersecting) navLinks.forEach((a) => a.classList.toggle("is-active", a.hash === "#" + en.target.id));
+  });
+}, { rootMargin: "-45% 0px -50% 0px" });
+navLinks.forEach((a) => { const s = $(a.hash); if (s) spy.observe(s); });
+
+/* ---------- abierto / cerrado ---------- */
+function estado(now = new Date()) {
+  const mins = now.getHours() * 60 + now.getMinutes();
+  const hoy = tramosDe(now);
+  const abierto = hoy.find(([a, b]) => mins >= toMin(a) && mins < toMin(b));
+  if (abierto) {
+    const resto = hoy.find(([a]) => toMin(a) > mins);
+    return { open: true, hasta: abierto[1], despues: resto };
+  }
+  for (let i = 0; i < 8; i++) {
+    const d = new Date(now); d.setDate(now.getDate() + i);
+    const t = tramosDe(d).find(([a]) => i > 0 || toMin(a) > mins);
+    if (t) return { open: false, dia: i, fecha: d, a: t[0] };
+  }
+  return { open: false };
+}
+
+function pintarEstado() {
+  const e = estado();
+  const big = $("#hero-next"), sub = $("#hero-sub"), st = $("#hero-status"), hs = $("#hours-status");
+  [st, hs].forEach((el) => { el.classList.toggle("is-open", e.open); el.classList.toggle("is-closed", !e.open); el.textContent = e.open ? "Abierto" : "Cerrado"; });
+  if (e.open) {
+    big.textContent = `Abierto hasta las ${e.hasta}`;
+    sub.textContent = e.despues ? `Por la tarde, de ${e.despues[0]} a ${e.despues[1]}.` : "Último tramo del día.";
+  } else if (e.a) {
+    const cuando = e.dia === 0 ? "hoy" : e.dia === 1 ? "mañana" : `el ${DIAS[e.fecha.getDay()]}`;
+    big.textContent = `Abrimos ${cuando} a las ${e.a}`;
+    sub.textContent = "Puedes dejar tu cita pedida ya por WhatsApp.";
+  }
+}
+
+function pintarHorario() {
+  const orden = [1, 2, 3, 4, 5, 6, 0];
+  const hoy = new Date().getDay();
+  $("#hours-list").innerHTML = orden.map((d) => {
+    const t = CONFIG.horario[d] || [];
+    const txt = t.length ? t.map(([a, b]) => `${a}–${b}`).join(" · ") : "Cerrado";
+    const nombre = DIAS[d][0].toUpperCase() + DIAS[d].slice(1);
+    return `<div class="${d === hoy ? "is-today" : ""}"><dt>${nombre}${d === hoy ? " · hoy" : ""}</dt><dd>${txt}</dd></div>`;
+  }).join("");
+}
+pintarEstado();
+pintarHorario();
+setInterval(pintarEstado, 60000);
+
+/* ---------- filtro de servicios ---------- */
+const chips = $$(".chips .chip");
+const items = $$("#menu li");
+chips.forEach((c) => c.addEventListener("click", () => {
+  chips.forEach((x) => x.setAttribute("aria-pressed", String(x === c)));
+  items.forEach((li) => (li.hidden = !(c.dataset.filter === "all" || li.dataset.cat === c.dataset.filter)));
+}));
+
+/* ---------- reserva ---------- */
+const form = $("#booking-form");
+const fServicio = $("#f-servicio");
+const fDias = $("#f-dias");
+const fHoras = $("#f-horas");
+const fPreview = $("#f-preview");
+const fError = $("#f-error");
+const fSend = $("#f-send");
+const sel = { dia: null, hora: null };
+
+items.forEach((li) => {
+  const o = document.createElement("option");
+  o.textContent = $("h3", li).textContent;
+  fServicio.appendChild(o);
+});
+
+function horasDe(d) {
+  const now = new Date();
+  const minNow = sameDay(d, now) ? now.getHours() * 60 + now.getMinutes() + 30 : -1;
+  const out = [];
+  tramosDe(d).forEach(([a, b]) => {
+    for (let m = toMin(a); m <= toMin(b) - 45; m += 60) if (m > minNow) out.push(m);
+  });
+  return out;
+}
+
+function pintarDias() {
+  const hoy = new Date(); hoy.setHours(12, 0, 0, 0);
+  const dias = [];
+  for (let i = 0; i < CONFIG.diasReservables; i++) {
+    const d = new Date(hoy); d.setDate(hoy.getDate() + i);
+    if (horasDe(d).length) dias.push(d);
+  }
+  fDias.innerHTML = "";
+  dias.forEach((d) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "slot";
+    b.setAttribute("aria-pressed", "false");
+    const diff = Math.round((d - hoy) / 864e5);
+    const etiqueta = diff === 0 ? "hoy" : diff === 1 ? "mañana" : DIAS_CORTO[d.getDay()];
+    b.innerHTML = `<small>${etiqueta}</small>${d.getDate()} ${MESES[d.getMonth()]}`;
+    b.setAttribute("aria-label", `${DIAS[d.getDay()]} ${d.getDate()} de ${MESES_LARGO[d.getMonth()]}`);
+    b.addEventListener("click", () => {
+      sel.dia = d; sel.hora = null;
+      $$(".slot", fDias).forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+      fDias.classList.remove("is-invalid");
+      pintarHoras();
+      actualizar();
+    });
+    fDias.appendChild(b);
+  });
+}
+
+function pintarHoras() {
+  fHoras.innerHTML = "";
+  if (!sel.dia) { fHoras.innerHTML = '<p class="hint">Elige primero un día.</p>'; return; }
+  const all = [...horasDe(sel.dia).map(toHHMM), "Me da igual"];
+  all.forEach((h) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "slot slot--time";
+    b.textContent = h;
+    b.setAttribute("aria-pressed", "false");
+    b.addEventListener("click", () => {
+      sel.hora = h;
+      $$(".slot", fHoras).forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+      fHoras.classList.remove("is-invalid");
+      actualizar();
+    });
+    fHoras.appendChild(b);
+  });
+}
+
+function mensaje() {
+  const nombre = $("#f-nombre").value.trim();
+  const servicio = fServicio.value;
+  const notas = $("#f-notas").value.trim();
+  const partes = ["¡Hola!"];
+  partes.push(nombre ? ` Soy ${nombre}.` : "");
+  partes.push(` Me gustaría pedir cita${servicio ? ` para *${servicio}*` : ""}`);
+  if (sel.dia) partes.push(` el ${DIAS[sel.dia.getDay()]} ${sel.dia.getDate()} de ${MESES_LARGO[sel.dia.getMonth()]}`);
+  if (sel.hora) partes.push(sel.hora === "Me da igual" ? ", a cualquier hora" : ` a las ${sel.hora}`);
+  partes.push(".");
+  let txt = partes.join("");
+  if (notas) txt += `\n\n${notas}`;
+  return txt;
+}
+
+function faltan() {
+  const f = [];
+  if (!$("#f-nombre").value.trim()) f.push(["nombre", $("#f-nombre")]);
+  if (!fServicio.value) f.push(["servicio", fServicio]);
+  if (!sel.dia) f.push(["día", fDias]);
+  if (!sel.hora) f.push(["hora", fHoras]);
+  return f;
+}
+
+function actualizar() {
+  const txt = mensaje();
+  fPreview.textContent = txt;
+  fSend.href = waLink(txt);
+  $("#f-nombre").removeAttribute("aria-invalid");
+  if (fServicio.value) fServicio.removeAttribute("aria-invalid");
+  if (!fError.hidden && !faltan().length) fError.hidden = true;
+}
+
+function validar() {
+  const f = faltan();
+  setInvalid($("#f-nombre"), !$("#f-nombre").value.trim());
+  setInvalid(fServicio, !fServicio.value);
+  fDias.classList.toggle("is-invalid", !sel.dia);
+  fHoras.classList.toggle("is-invalid", !sel.hora);
+  if (f.length) {
+    fError.textContent = `Falta: ${f.map((x) => x[0]).join(", ")}.`;
+    fError.hidden = false;
+    const el = f[0][1];
+    (el.matches("input,select") ? el : $(".slot", el) || el).focus();
+    return false;
+  }
+  fError.hidden = true;
+  return true;
+}
+
+form.addEventListener("input", actualizar);
+form.addEventListener("submit", (e) => e.preventDefault());
+fSend.addEventListener("click", (e) => { if (!validar()) e.preventDefault(); });
+$("#f-copy").addEventListener("click", () => { if (validar()) copyText(mensaje(), "Mensaje copiado"); });
+
+// Preseleccionar servicio al pulsar uno de la carta
+items.forEach((li) => {
+  li.style.cursor = "pointer";
+  li.title = "Reservar este servicio";
+  li.tabIndex = 0;
+  const elegir = () => {
+    fServicio.value = $("h3", li).textContent;
+    actualizar();
+    $("#reservar").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+    $("#f-nombre").focus({ preventScroll: true });
+  };
+  li.addEventListener("click", elegir);
+  li.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); elegir(); } });
+});
+
+pintarDias();
+pintarHoras();
+actualizar();
+
+/* ---------- carrusel de fotos ---------- */
+(function carousel() {
+  const track = $("#carousel-track");
+  if (!track) return;
+  const dots = $("#carousel-dots");
+  const playBtn = $("#carousel-play");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  CONFIG.fotos.forEach((f, i) => {
+    const fig = document.createElement("figure");
+    fig.className = "slide" + (f.src ? "" : " slide--empty");
+    fig.dataset.tone = String((i % 6) + 1);
+    fig.setAttribute("aria-roledescription", "foto");
+    fig.setAttribute("aria-label", `${i + 1} de ${CONFIG.fotos.length}`);
+    if (f.src) {
+      const img = new Image();
+      img.src = f.src;
+      img.alt = f.texto || "Trabajo de La Argentina Estilista";
+      img.loading = "lazy";
+      img.decoding = "async";
+      fig.appendChild(img);
+    }
+    if (f.texto) {
+      const c = document.createElement("figcaption");
+      c.textContent = f.texto;
+      fig.appendChild(c);
+    }
+    track.appendChild(fig);
+    const d = document.createElement("button");
+    d.type = "button";
+    d.setAttribute("aria-label", `Ir a la foto ${i + 1}`);
+    d.addEventListener("click", () => { go(i); stop(); });
+    dots.appendChild(d);
+  });
+
+  const slides = $$(".slide", track);
+  const step = () => (slides[1] ? slides[1].offsetLeft - slides[0].offsetLeft : track.clientWidth);
+  const perView = () => Math.max(1, Math.round(track.clientWidth / step()));
+  const maxIndex = () => Math.max(0, slides.length - perView());
+  let idx = 0;
+  function go(i) {
+    idx = i > maxIndex() ? 0 : i < 0 ? maxIndex() : i;
+    track.scrollTo({ left: slides[idx].offsetLeft - slides[0].offsetLeft, behavior: reduce ? "auto" : "smooth" });
+  }
+  function syncDots() {
+    idx = Math.min(Math.round(track.scrollLeft / step()), maxIndex());
+    $$("button", dots).forEach((d, j) => d.setAttribute("aria-current", String(j >= idx && j < idx + perView())));
+  }
+  track.addEventListener("scroll", () => requestAnimationFrame(syncDots), { passive: true });
+  addEventListener("resize", syncDots);
+  syncDots();
+
+  let timer = null, paused = reduce, hover = false;
+  const tick = () => { if (!hover && !document.hidden) go(idx + 1); };
+  function render() {
+    playBtn.classList.toggle("is-paused", paused);
+    playBtn.setAttribute("aria-label", paused ? "Reanudar el pase de fotos" : "Pausar el pase de fotos");
+  }
+  function start() { clearInterval(timer); if (!paused) timer = setInterval(tick, CONFIG.segundosPorFoto * 1000); render(); }
+  function stop() { paused = true; start(); }
+  playBtn.addEventListener("click", () => { paused = !paused; start(); });
+  $("#carousel-prev").addEventListener("click", () => { go(idx - 1); stop(); });
+  $("#carousel-next").addEventListener("click", () => { go(idx + 1); stop(); });
+  const car = $("#carousel");
+  car.addEventListener("pointerenter", () => (hover = true));
+  car.addEventListener("pointerleave", () => (hover = false));
+  car.addEventListener("focusin", () => (hover = true));
+  car.addEventListener("focusout", () => (hover = false));
+  track.addEventListener("touchstart", stop, { passive: true });
+  track.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") { e.preventDefault(); go(idx + 1); stop(); }
+    if (e.key === "ArrowLeft") { e.preventDefault(); go(idx - 1); stop(); }
+  });
+  start();
+})();
+
+/* ---------- mechones animados del portada ---------- */
+(function strands() {
+  const cv = $("#strands");
+  if (!cv || !cv.getContext || $("#hero").classList.contains("hero--photo")) return;
+  const ctx = cv.getContext("2d");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)");
+  let w = 0, h = 0, colors = {}, running = true, raf = 0;
+  const N = 38;
+  const seeds = Array.from({ length: N }, (_, i) => ({
+    x: i / (N - 1), ph: Math.random() * Math.PI * 2, sp: 0.5 + Math.random() * 0.6,
+    lw: 0.8 + Math.random() * 1.8, al: 0.25 + Math.random() * 0.55, amp: 30 + Math.random() * 60,
+  }));
+  function readColors() {
+    const cs = getComputedStyle(document.documentElement);
+    colors = { a: cs.getPropertyValue("--accent").trim(), b: cs.getPropertyValue("--brass").trim() };
+  }
+  function resize() {
+    const r = cv.getBoundingClientRect();
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    w = r.width; h = r.height;
+    cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    draw(performance.now());
+  }
+  function draw(t) {
+    ctx.clearRect(0, 0, w, h);
+    const g = ctx.createLinearGradient(0, 0, w, h);
+    g.addColorStop(0, colors.b); g.addColorStop(1, colors.a);
+    ctx.strokeStyle = g;
+    const time = reduce.matches ? 0 : t / 1000;
+    seeds.forEach((s) => {
+      const x0 = w * (0.1 + s.x * 0.95);
+      const sw = Math.sin(time * s.sp + s.ph);
+      const sw2 = Math.cos(time * s.sp * 0.7 + s.ph);
+      ctx.globalAlpha = s.al;
+      ctx.lineWidth = s.lw;
+      ctx.beginPath();
+      ctx.moveTo(x0 - w * 0.05, -10);
+      ctx.bezierCurveTo(
+        x0 + sw * s.amp, h * 0.3,
+        x0 - w * 0.12 + sw2 * s.amp * 1.4, h * 0.65,
+        x0 - w * 0.2 + sw * s.amp * 0.6, h + 10
+      );
+      ctx.stroke();
+    });
+    ctx.globalAlpha = 1;
+  }
+  function loop(t) {
+    draw(t);
+    if (running && !reduce.matches) raf = requestAnimationFrame(loop);
+  }
+  function start() { cancelAnimationFrame(raf); if (running && !reduce.matches) raf = requestAnimationFrame(loop); else draw(0); }
+  readColors();
+  new ResizeObserver(resize).observe(cv);
+  new IntersectionObserver(([e]) => { running = e.isIntersecting && !document.hidden; start(); }).observe(cv);
+  document.addEventListener("visibilitychange", () => { running = !document.hidden; start(); });
+  reduce.addEventListener?.("change", start);
+  const recolor = () => { readColors(); draw(performance.now()); };
+  matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", recolor);
+  new MutationObserver(recolor).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+})();
+</script>
+
+</body></html>
