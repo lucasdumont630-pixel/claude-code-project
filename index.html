@@ -10,26 +10,24 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: concrete-grey studio wall, condensed sign-style type, a single oxblood "barber pole" accent used only for booking actions. */
+/* Layout: white and grey studio, condensed sign-style type, charcoal used only for booking actions. Grey bands separate sections. */
 :root{
-  --bg:#eceef0;          /* concrete wall */
-  --surface:#f7f8f9;
-  --ink:#141618;
-  --muted:#5b6168;
-  --line:#c9cdd2;
-  --accent:#8e1f2b;      /* oxblood, barber pole */
+  --bg:#ffffff;          /* blanco */
+  --surface:#f2f3f4;     /* gris claro para bandas */
+  --ink:#1f2224;         /* gris carbón */
+  --muted:#6b7075;
+  --line:#d9dcdf;
+  --accent:#3a3e42;      /* gris oscuro para acciones */
   --accent-ink:#ffffff;
-  --chip:#dfe2e6;
+  --chip:#e8eaec;
   --font-display:"Archivo","Arial Narrow",Arial,sans-serif;
   --font-body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
   --font-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
   --wrap:1180px;
   --gutter-l:max(16px, env(safe-area-inset-left, 0px));
   --gutter-r:max(16px, env(safe-area-inset-right, 0px));
+  color-scheme:light;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#121416;--surface:#1a1d20;--ink:#eceef0;--muted:#9aa1a8;--line:#2c3136;--accent:#c2414f;--accent-ink:#ffffff;--chip:#24282c;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#121416;--surface:#1a1d20;--ink:#eceef0;--muted:#9aa1a8;--line:#2c3136;--accent:#c2414f;--accent-ink:#ffffff;--chip:#24282c;color-scheme:dark}
 
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -73,11 +71,11 @@ p{margin:0}
 .hero-lede strong{color:var(--ink);font-weight:600}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px}
 .rating{display:flex;align-items:center;gap:14px;font:500 14px/1.3 var(--font-mono)}
-.stars{color:var(--accent);letter-spacing:2px;font-size:16px}
+.stars{color:var(--ink);letter-spacing:2px;font-size:16px}
 .hero-photo{position:relative;border-radius:6px;overflow:hidden;min-height:420px;max-width:100%}
 .hero-photo img{position:absolute;inset:0}
 .hero-photo img{width:100%;height:100%;object-fit:cover}
-.pole{position:absolute;left:16px;top:16px;width:10px;height:88px;border-radius:6px;background:repeating-linear-gradient(-45deg,var(--accent) 0 8px,#fff 8px 16px,#1d3b74 16px 24px,#fff 24px 32px);background-size:100% 64px;animation:pole 2.4s linear infinite;box-shadow:0 0 0 3px rgba(255,255,255,.7)}
+.pole{position:absolute;left:16px;top:16px;width:10px;height:88px;border-radius:6px;background:repeating-linear-gradient(-45deg,#3a3e42 0 8px,#fff 8px 16px,#9ca1a6 16px 24px,#fff 24px 32px);background-size:100% 64px;animation:pole 2.4s linear infinite;box-shadow:0 0 0 3px rgba(255,255,255,.7)}
 @keyframes pole{to{background-position:0 64px}}
 @media (prefers-reduced-motion:reduce){.pole{animation:none}html{scroll-behavior:auto}}
 @media (max-width:860px){.hero-grid{grid-template-columns:1fr}.hero-photo{aspect-ratio:5/4;min-height:0}}
@@ -137,6 +135,7 @@ section.block{padding-block:88px}
 
 /* photos + booking */
 .photos{background:var(--surface);border-block:1px solid var(--line)}
+#fotos{background:var(--bg)}
 .ph-grid{display:grid;grid-template-columns:1fr 360px;gap:32px;align-items:start}
 .gallery{columns:3;column-gap:10px;min-width:0}
 .gallery button{all:unset;display:block;break-inside:avoid;margin-bottom:10px;cursor:zoom-in;border-radius:5px;overflow:hidden;position:relative;background:var(--chip)}
@@ -179,6 +178,20 @@ blockquote p{font:700 clamp(30px,4.4vw,52px)/1.05 var(--font-display);font-stret
 blockquote cite{font:500 13px/1.3 var(--font-mono);font-style:normal;color:var(--muted);letter-spacing:.04em}
 @media (max-width:760px){.reviews{grid-template-columns:1fr;gap:32px}}
 
+
+.rv-head{margin-top:72px}
+.rv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media (max-width:900px){.rv-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:440px){.rv-grid{grid-template-columns:1fr}}
+.rv{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:18px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.rv-top{display:flex;align-items:center;gap:12px}
+.rv-av{width:38px;height:38px;border-radius:50%;background:var(--chip);display:grid;place-items:center;font:700 16px/1 var(--font-display);flex:none}
+.rv-top b{display:block;font-weight:600}
+.rv-top span{font:400 12px/1.3 var(--font-mono);color:var(--muted)}
+.rv .stars{font-size:14px}
+.rv p{font-size:15px}
+.rv .svc{font:500 12px/1.3 var(--font-mono);letter-spacing:.04em;color:var(--muted);margin-top:auto}
+.rv-more{margin-top:24px}
 .perks{display:flex;flex-wrap:wrap;gap:10px;margin-top:56px}
 .perks span{font:500 14px/1 var(--font-body);padding:11px 15px;border-radius:999px;background:var(--chip)}
 
@@ -218,6 +231,7 @@ footer a:hover{text-decoration:underline}
       <a href="#servicios">Servicios</a>
       <a href="#equipo">Equipo</a>
       <a href="#fotos">Fotos y cita</a>
+      <a href="#resenas">Reseñas</a>
       <a href="#visitanos">Visítanos</a>
     </nav>
     <a class="btn btn--book" href="https://booksy.com/es-es/152610_yzee-male-club-hair-beauty-studio_barberia_55436_alicante-alacant" target="_blank" rel="noopener">Reservar cita</a>
@@ -407,7 +421,7 @@ footer a:hover{text-decoration:underline}
   </section>
 
   <!-- RESEÑAS -->
-  <section class="block" id="resenas">
+  <section class="block photos" id="resenas">
     <div class="wrap">
       <div class="reviews">
         <div>
@@ -425,6 +439,25 @@ footer a:hover{text-decoration:underline}
           <cite>Enrique · Corte caballero con Alejo · noviembre 2026</cite>
         </blockquote>
       </div>
+
+      <div class="head rv-head">
+        <div>
+          <p class="eyebrow">Lo que dicen los clientes</p>
+          <h2>Reseñas</h2>
+        </div>
+        <p>Las valoraciones más recientes de clientes que han reservado en Booksy y han pasado por el estudio.</p>
+      </div>
+      <div class="rv-grid">
+          <article class="rv"><div class="rv-top"><span class="rv-av" aria-hidden="true">E</span><div><b>Enrique</b><span>9 nov 2026</span></div></div><span class="stars" aria-label="5 de 5 estrellas">★★★★★</span><p>"Alejo brother me arreglaste la vida. 10/10"</p><span class="svc">Corte caballero · con Alejo</span></article>
+          <article class="rv"><div class="rv-top"><span class="rv-av" aria-hidden="true">A</span><div><b>Alvaro</b><span>11 nov 2026</span></div></div><span class="stars" aria-label="5 de 5 estrellas">★★★★★</span><span class="svc">Corte caballero · con Nico</span></article>
+          <article class="rv"><div class="rv-top"><span class="rv-av" aria-hidden="true">O</span><div><b>Olga</b><span>11 nov 2026</span></div></div><span class="stars" aria-label="5 de 5 estrellas">★★★★★</span><span class="svc">Corte largo para mujer · con Alla</span></article>
+          <article class="rv"><div class="rv-top"><span class="rv-av" aria-hidden="true">J</span><div><b>Jose</b><span>10 nov 2026</span></div></div><span class="stars" aria-label="5 de 5 estrellas">★★★★★</span><span class="svc">Corte caballero · con Alejo</span></article>
+          <article class="rv"><div class="rv-top"><span class="rv-av" aria-hidden="true">K</span><div><b>Kevin</b><span>8 nov 2026</span></div></div><span class="stars" aria-label="5 de 5 estrellas">★★★★★</span><span class="svc">Corte caballero · con Nico</span></article>
+          <article class="rv"><div class="rv-top"><span class="rv-av" aria-hidden="true">M</span><div><b>Mikhaela</b><span>8 nov 2026</span></div></div><span class="stars" aria-label="5 de 5 estrellas">★★★★★</span><span class="svc">Corte niño · con Alla</span></article>
+          <article class="rv"><div class="rv-top"><span class="rv-av" aria-hidden="true">S</span><div><b>Santino</b><span>7 nov 2026</span></div></div><span class="stars" aria-label="5 de 5 estrellas">★★★★★</span><span class="svc">Corte caballero · con Cristian</span></article>
+          <article class="rv"><div class="rv-top"><span class="rv-av" aria-hidden="true">R</span><div><b>Roman</b><span>7 nov 2026</span></div></div><span class="stars" aria-label="5 de 5 estrellas">★★★★★</span><span class="svc">Corte caballero · con Valentin</span></article>
+      </div>
+      <a class="btn rv-more" href="https://booksy.com/es-es/152610_yzee-male-club-hair-beauty-studio_barberia_55436_alicante-alacant#reviews" target="_blank" rel="noopener">Ver las 151 reseñas en Booksy ↗</a>
       <div class="perks" aria-label="Comodidades">
         <span>Agua o café incluido</span><span>Zona PlayStation</span><span>Wi-Fi</span><span>Pago con tarjeta</span><span>Acceso para movilidad reducida</span><span>Adaptado para niños</span><span>Se admiten mascotas</span><span>Programa de fidelidad</span><span>Bonos de sesiones</span>
       </div>
