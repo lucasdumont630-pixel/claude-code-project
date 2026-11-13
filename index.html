@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>YZEE Male Club</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="YZEE Male Club, Hair &amp; Beauty Studio en Alicante. Barbería, peluquería de mujer, uñas y spa. Calle Calderón de la Barca, 12. Reserva tu cita online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: concrete-grey studio wall, condensed sign-style type, a single oxblood "barber pole" accent used only for booking actions. */
+:root{
+  --bg:#eceef0;          /* concrete wall */
+  --surface:#f7f8f9;
+  --ink:#141618;
+  --muted:#5b6168;
+  --line:#c9cdd2;
+  --accent:#8e1f2b;      /* oxblood, barber pole */
+  --accent-ink:#ffffff;
+  --chip:#dfe2e6;
+  --font-display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --font-body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --wrap:1180px;
+  --gutter-l:max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r:max(16px, env(safe-area-inset-right, 0px));
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121416;--surface:#1a1d20;--ink:#eceef0;--muted:#9aa1a8;--line:#2c3136;--accent:#c2414f;--accent-ink:#ffffff;--chip:#24282c;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#121416;--surface:#1a1d20;--ink:#eceef0;--muted:#9aa1a8;--line:#2c3136;--accent:#c2414f;--accent-ink:#ffffff;--chip:#24282c;color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--font-body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--font-display);text-wrap:balance;margin:0;line-height:1}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.eyebrow{font:500 12px/1.2 var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 15px/1 var(--font-body);text-decoration:none;padding:15px 22px;border-radius:999px;border:1.5px solid var(--ink);color:var(--ink);background:transparent;cursor:pointer;transition:background .2s,color .2s,transform .2s}
+.btn:hover{background:var(--ink);color:var(--bg)}
+.btn--book{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn--book:hover{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.btn svg{width:16px;height:16px}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+.brand{display:flex;align-items:baseline;gap:10px;text-decoration:none}
+.brand b{font:900 26px/1 var(--font-display);font-stretch:62%;letter-spacing:.02em}
+.brand span{font:500 11px/1 var(--font-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.nav{display:flex;gap:26px}
+.nav a{text-decoration:none;font-weight:500;font-size:15px;color:var(--muted)}
+.nav a:hover{color:var(--ink)}
+.top .btn{padding:11px 18px;font-size:14px}
+@media (max-width:860px){.nav{display:none}.brand span{display:none}}
+
+/* hero */
+.hero{padding-block:48px 28px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:stretch}
+.hero h1{font-weight:900;font-stretch:62%;font-size:clamp(84px,15vw,200px);line-height:.82;letter-spacing:-.01em;text-transform:uppercase}
+.hero h1 .thin{display:block;font-weight:300;font-stretch:100%;font-size:.3em;letter-spacing:.02em;line-height:1.1;margin-top:.25em;text-transform:none}
+.hero-copy{display:flex;flex-direction:column;gap:26px}
+.hero-lede{font-size:19px;max-width:34ch;color:var(--muted)}
+.hero-lede strong{color:var(--ink);font-weight:600}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px}
+.rating{display:flex;align-items:center;gap:14px;font:500 14px/1.3 var(--font-mono)}
+.stars{color:var(--accent);letter-spacing:2px;font-size:16px}
+.hero-photo{position:relative;border-radius:6px;overflow:hidden;min-height:420px;max-width:100%}
+.hero-photo img{position:absolute;inset:0}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+.pole{position:absolute;left:16px;top:16px;width:10px;height:88px;border-radius:6px;background:repeating-linear-gradient(-45deg,var(--accent) 0 8px,#fff 8px 16px,#1d3b74 16px 24px,#fff 24px 32px);background-size:100% 64px;animation:pole 2.4s linear infinite;box-shadow:0 0 0 3px rgba(255,255,255,.7)}
+@keyframes pole{to{background-position:0 64px}}
+@media (prefers-reduced-motion:reduce){.pole{animation:none}html{scroll-behavior:auto}}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr}.hero-photo{aspect-ratio:5/4;min-height:0}}
+
+/* facts strip */
+.facts{border-block:1px solid var(--line);margin-top:36px}
+.facts .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.fact{padding:20px 20px 20px 0;display:flex;flex-direction:column;gap:6px;min-width:0}
+.fact + .fact{padding-left:20px;border-left:1px solid var(--line)}
+.fact b{font:700 20px/1.15 var(--font-display);font-stretch:85%}
+.fact a{text-decoration:none}
+.fact a:hover{text-decoration:underline}
+@media (max-width:860px){.facts .wrap{grid-template-columns:1fr 1fr}.fact:nth-child(3){padding-left:0;border-left:0}.fact:nth-child(n+3){border-top:1px solid var(--line)}}
+@media (max-width:440px){.facts .wrap{grid-template-columns:1fr}.fact,.fact + .fact{padding-left:0;border-left:0}.fact + .fact{border-top:1px solid var(--line)}}
+
+/* sections */
+section.block{padding-block:88px}
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px 40px;margin-bottom:40px}
+.head h2{font-weight:800;font-stretch:70%;font-size:clamp(44px,7vw,84px);text-transform:uppercase;letter-spacing:-.005em}
+.head p{max-width:44ch;color:var(--muted)}
+.head .eyebrow{margin-bottom:14px}
+
+/* services */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.tab{font:600 14px/1 var(--font-body);padding:12px 18px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:0 56px}
+.item{display:grid;grid-template-columns:1fr auto;gap:4px 20px;padding:18px 0;border-bottom:1px solid var(--line);min-width:0}
+.item h3{font:700 21px/1.15 var(--font-display);font-stretch:85%}
+.item .price{font:500 16px/1.3 var(--font-mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.item .price s{color:var(--muted);font-size:13px;margin-right:6px}
+.item p{grid-column:1/-1;color:var(--muted);font-size:14.5px;max-width:60ch}
+.item .dur{font:400 12.5px/1.3 var(--font-mono);color:var(--muted);text-align:right;white-space:nowrap;grid-column:2;grid-row:2}
+.item p{grid-row:2;grid-column:1}
+.save{display:inline-block;font:500 11px/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;background:var(--accent);color:var(--accent-ink);padding:4px 7px;border-radius:3px;margin-left:8px;vertical-align:3px}
+.menu-note{margin-top:22px;font-size:14px;color:var(--muted)}
+@media (max-width:760px){.menu{grid-template-columns:1fr}}
+
+.club{margin-top:56px;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:0;border:1.5px solid var(--ink);border-radius:6px;overflow:hidden}
+.club > div{padding:26px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.club > div + div{border-left:1.5px solid var(--ink)}
+.club h3{font-weight:800;font-stretch:70%;font-size:34px;text-transform:uppercase}
+.club .big{font:500 30px/1 var(--font-mono);font-variant-numeric:tabular-nums}
+.club .big small{font-size:14px;color:var(--muted)}
+@media (max-width:760px){.club{grid-template-columns:1fr}.club > div + div{border-left:0;border-top:1.5px solid var(--ink)}}
+
+/* team */
+.team{display:grid;grid-template-columns:repeat(4,1fr);gap:28px 20px}
+.member{display:flex;flex-direction:column;gap:10px;min-width:0}
+.member figure{margin:0;aspect-ratio:4/5;border-radius:6px;overflow:hidden;background:var(--chip)}
+.member img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05);transition:filter .35s}
+.member:hover img{filter:none}
+.member h3{font-weight:800;font-stretch:75%;font-size:26px;text-transform:uppercase}
+.member .role{font:500 12px/1.3 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.member p{font-size:14px;color:var(--muted)}
+@media (max-width:900px){.team{grid-template-columns:repeat(2,1fr)}}
+
+/* photos + booking */
+.photos{background:var(--surface);border-block:1px solid var(--line)}
+.ph-grid{display:grid;grid-template-columns:1fr 360px;gap:32px;align-items:start}
+.gallery{columns:3;column-gap:10px;min-width:0}
+.gallery button{all:unset;display:block;break-inside:avoid;margin-bottom:10px;cursor:zoom-in;border-radius:5px;overflow:hidden;position:relative;background:var(--chip)}
+.gallery button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.gallery img{width:100%;height:auto;transition:transform .5s}
+.gallery button:hover img{transform:scale(1.04)}
+.gallery figcaption{position:absolute;left:8px;bottom:8px;font:500 11px/1 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;background:rgba(10,10,10,.72);color:#fff;padding:6px 8px;border-radius:3px}
+@media (max-width:560px){.gallery{columns:2}}
+
+.book{position:sticky;top:calc(env(safe-area-inset-top,0px) + 92px);background:var(--bg);border:1.5px solid var(--ink);border-radius:8px;padding:24px;display:flex;flex-direction:column;gap:16px}
+.book h3{font-weight:800;font-stretch:70%;font-size:36px;text-transform:uppercase}
+.book label{display:flex;flex-direction:column;gap:6px;font:500 12px/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.book select{font:500 15px/1.2 var(--font-body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px;appearance:auto;width:100%}
+.days{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.days button{font:500 13px/1.1 var(--font-mono);padding:9px 0;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;text-align:center}
+.days button small{display:block;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.days button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.days button[aria-pressed="true"] small{color:var(--bg)}
+.summary{font-size:14px;background:var(--chip);border-radius:6px;padding:12px 14px}
+.summary b{font-weight:600}
+.book .btn{justify-content:center}
+.book .fine{font-size:12.5px;color:var(--muted)}
+@media (max-width:940px){.ph-grid{grid-template-columns:1fr}.book{position:static}}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:80;background:rgba(8,9,10,.92);display:flex;align-items:center;justify-content:center;padding:calc(env(safe-area-inset-top,0px) + 56px) var(--gutter-r) calc(env(safe-area-inset-bottom,0px) + 24px) var(--gutter-l)}
+.lb img{max-height:100%;max-width:100%;border-radius:4px;object-fit:contain}
+.lb button{position:absolute;top:calc(env(safe-area-inset-top,0px) + 12px);right:calc(env(safe-area-inset-right,0px) + 12px);font:600 14px/1 var(--font-body);color:#fff;background:transparent;border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:10px 16px;cursor:pointer}
+
+/* reviews */
+.reviews{display:grid;grid-template-columns:auto 1fr;gap:56px;align-items:center}
+.score{font:900 150px/.8 var(--font-display);font-stretch:62%}
+.score small{display:block;font:500 13px/1.4 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:14px}
+.bars{display:flex;flex-direction:column;gap:8px;max-width:420px;margin-top:22px}
+.bar{display:grid;grid-template-columns:24px 1fr 36px;gap:10px;align-items:center;font:400 13px/1 var(--font-mono);font-variant-numeric:tabular-nums}
+.bar i{height:6px;background:var(--chip);border-radius:3px;overflow:hidden;display:block}
+.bar i::after{content:"";display:block;height:100%;width:var(--w);background:var(--ink)}
+blockquote{margin:0;display:flex;flex-direction:column;gap:18px}
+blockquote p{font:700 clamp(30px,4.4vw,52px)/1.05 var(--font-display);font-stretch:80%;text-wrap:balance}
+blockquote cite{font:500 13px/1.3 var(--font-mono);font-style:normal;color:var(--muted);letter-spacing:.04em}
+@media (max-width:760px){.reviews{grid-template-columns:1fr;gap:32px}}
+
+.perks{display:flex;flex-wrap:wrap;gap:10px;margin-top:56px}
+.perks span{font:500 14px/1 var(--font-body);padding:11px 15px;border-radius:999px;background:var(--chip)}
+
+/* visit */
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.visit dl{margin:0;display:grid;grid-template-columns:140px 1fr;gap:0}
+.visit dt,.visit dd{margin:0;padding:16px 0;border-bottom:1px solid var(--line)}
+.visit dt{font:500 12px/1.6 var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.visit dd{font-size:17px;min-width:0}
+.visit dd a{text-decoration-thickness:1px;text-underline-offset:3px}
+.hours{width:100%;border-collapse:collapse;font:400 15px/1 var(--font-mono);font-variant-numeric:tabular-nums}
+.hours td{padding:13px 0;border-bottom:1px solid var(--line)}
+.hours td:last-child{text-align:right}
+.hours tr.today td{font-weight:500;color:var(--accent)}
+.hours tr.closed td:last-child{color:var(--muted)}
+.copy{font:500 12px/1 var(--font-mono);border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:6px 10px;margin-left:8px;cursor:pointer;vertical-align:2px}
+.map-link{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-top:22px;padding:22px;border-radius:6px;text-decoration:none;color:#fff;min-height:180px;background:linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.7)),url("img/local.jpg") center/cover}
+.map-link b{font-weight:800;font-family:var(--font-display);font-stretch:75%;font-size:28px;text-transform:uppercase;line-height:1}
+@media (max-width:760px){.visit{grid-template-columns:1fr}.visit dl{grid-template-columns:110px 1fr}}
+
+/* final CTA + footer */
+.final{background:var(--ink);color:var(--bg)}
+.final .wrap{padding-block:72px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px}
+.final h2{font-weight:900;font-stretch:62%;font-size:clamp(52px,9vw,120px);text-transform:uppercase;line-height:.85}
+.final .btn--book:hover{background:var(--bg);border-color:var(--bg);color:var(--ink)}
+footer .wrap{padding-block:28px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:13px;color:var(--muted)}
+footer a{text-decoration:none}
+footer a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio"><b>YZEE</b><span>Male Club · Alicante</span></a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#servicios">Servicios</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#fotos">Fotos y cita</a>
+      <a href="#visitanos">Visítanos</a>
+    </nav>
+    <a class="btn btn--book" href="https://booksy.com/es-es/152610_yzee-male-club-hair-beauty-studio_barberia_55436_alicante-alacant" target="_blank" rel="noopener">Reservar cita</a>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Hair &amp; Beauty Studio · Centro de Alicante</p>
+        <h1>YZEE<br>Male Club<span class="thin">Cortes limpios. Barbas definidas.</span></h1>
+        <p class="hero-lede">Un sitio de estilo, precisión y energía masculina. <strong>Barbería, peluquería de mujer, uñas y spa</strong> en Calderón de la Barca, con agua o café incluido y PlayStation mientras esperas.</p>
+        <div class="cta-row">
+          <a class="btn btn--book" href="https://booksy.com/es-es/152610_yzee-male-club-hair-beauty-studio_barberia_55436_alicante-alacant" target="_blank" rel="noopener">Reservar en Booksy
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13 13 3M6 3h7v7" stroke="currentColor" stroke-width="1.8"/></svg></a>
+          <a class="btn" href="#servicios">Ver precios</a>
+        </div>
+        <div class="rating"><span class="stars" aria-hidden="true">★★★★★</span><span>5,0 de 5 · 151 reseñas en Booksy</span></div>
+      </div>
+      <div class="hero-photo">
+        <img src="img/trabajo-1.jpg" alt="Barbero de YZEE perfilando la barba de un cliente" width="800" height="1200">
+        <span class="pole" aria-hidden="true"></span>
+      </div>
+    </div>
+  </section>
+
+  <div class="facts">
+    <div class="wrap">
+      <div class="fact"><span class="eyebrow">Dirección</span><b><a href="https://www.google.com/maps/search/?api=1&amp;query=Calle+Calder%C3%B3n+de+la+Barca+12+03004+Alicante" target="_blank" rel="noopener">C/ Calderón de la Barca, 12</a></b><span>03004 Alicante</span></div>
+      <div class="fact"><span class="eyebrow">Horario</span><b>Lun – Sáb · 10:00 – 20:00</b><span id="open-now">Domingo cerrado</span></div>
+      <div class="fact"><span class="eyebrow">Corte caballero</span><b>Desde 18 €</b><span>45 min · lavado y peinado</span></div>
+      <div class="fact"><span class="eyebrow">Idiomas</span><b>ES · EN · UA · PL</b><span>Te atendemos en tu idioma</span></div>
+    </div>
+  </div>
+
+  <!-- SERVICIOS -->
+  <section class="block" id="servicios">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Carta de servicios</p>
+          <h2>Servicios<br>y precios</h2>
+        </div>
+        <p>El precio de barbería varía según el barbero que elijas. Mostramos el rango real de la carta de Booksy, con el descuento de hasta un 10 % ya aplicado.</p>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Categorías de servicios">
+        <button class="tab" role="tab" id="t-barberia" aria-controls="p-barberia" aria-selected="true">Barbería</button>
+        <button class="tab" role="tab" id="t-mujer" aria-controls="p-mujer" aria-selected="false">Mujer</button>
+        <button class="tab" role="tab" id="t-unas" aria-controls="p-unas" aria-selected="false">Uñas y spa</button>
+        <button class="tab" role="tab" id="t-extras" aria-controls="p-extras" aria-selected="false">Extras</button>
+      </div>
+
+      <div class="menu" role="tabpanel" id="p-barberia" aria-labelledby="t-barberia">
+        <div class="item"><h3>Corte caballero <span class="save">−10 %</span></h3><span class="price">18 – 26 €</span><p>Lavado, forma precisa y peinado. Incluye agua o café.</p><span class="dur">45 min – 1 h 10</span></div>
+        <div class="item"><h3>Corte + barba <span class="save">−10 %</span></h3><span class="price">27 – 40 €</span><p>Corte y cuidado completo de barba. Bebidas y PlayStation incluidos.</p><span class="dur">1 h 15 – 1 h 45</span></div>
+        <div class="item"><h3>Barba</h3><span class="price">14,40 – 16 €</span><p>Arreglo de barba, afeitado con toalla caliente y navaja (opcional) y consejos de cuidado en casa.</p><span class="dur">30 min</span></div>
+        <div class="item"><h3>Corte niño</h3><span class="price">22 €</span><p>Corte infantil en un espacio adaptado para niños.</p><span class="dur">45 min</span></div>
+        <div class="item"><h3>Servicio premium</h3><span class="price">50 – 55 €</span><p>Paquete élite: corte, barba esculpida, limpieza facial rejuvenecedora y cera.</p><span class="dur">1 h 45 – 2 h</span></div>
+        <div class="item"><h3>Permanente</h3><span class="price"><s>90 €</s>81 – 90 €</span><p>Rizo de larga duración, el resultado dura varios meses. Pelo medio o largo.</p><span class="dur">2 h – 2 h 30</span></div>
+      </div>
+
+      <div class="menu" role="tabpanel" id="p-mujer" aria-labelledby="t-mujer" hidden>
+        <div class="item"><h3>Corte niña (hasta 10 años)</h3><span class="price">30 €</span><p>Con Alla o Anastasia.</p><span class="dur">45 min</span></div>
+        <div class="item"><h3>Corte mujer corto</h3><span class="price">35 €</span><p>Corte y peinado.</p><span class="dur">1 h 15</span></div>
+        <div class="item"><h3>Corte mujer medio</h3><span class="price">45 €</span><p>Corte y peinado.</p><span class="dur">1 h 30</span></div>
+        <div class="item"><h3>Corte mujer largo</h3><span class="price">50 – 60 €</span><p>Lavado, secado, mascarilla y peinado. Extra largo con capas, 60 €.</p><span class="dur">1 h 30 – 1 h 40</span></div>
+        <div class="item"><h3>Corte + peeling capilar</h3><span class="price">55 €</span><p>Corte con tratamiento exfoliante del cuero cabelludo.</p><span class="dur">1 h 35</span></div>
+        <div class="item"><h3>Lavado y secado</h3><span class="price">15 – 30 €</span><p>Lavado, secado, mascarilla y peinado exprés.</p><span class="dur">30 – 40 min</span></div>
+        <div class="item"><h3>Brushing</h3><span class="price">40 – 65 €</span><p>Lavado y peinado con cepillo según largo.</p><span class="dur">1 h 20 – 1 h 50</span></div>
+        <div class="item"><h3>Color completo</h3><span class="price">40 – 90 €</span><p>Un solo tono, con mascarilla y secado.</p><span class="dur">1 h 30 – 2 h 30</span></div>
+        <div class="item"><h3>Raíz</h3><span class="price">45 – 55 €</span><p>Retoque de raíz, también en rubio.</p><span class="dur">1 h 30 – 2 h</span></div>
+        <div class="item"><h3>Balayage, ombré y mechas</h3><span class="price">70 – 180 €</span><p>Según largo, de corto a extra largo.</p><span class="dur">2 h 30 – 5 h</span></div>
+        <div class="item"><h3>Matiz y contouring</h3><span class="price">50 – 80 €</span><p>Tonalización según largo.</p><span class="dur">1 h 20 – 2 h 30</span></div>
+        <div class="item"><h3>Corrección de color</h3><span class="price">100 – 180 €</span><p>De oscuro a claro.</p><span class="dur">2 h – 3 h 30</span></div>
+        <div class="item"><h3>Keratina / botox capilar</h3><span class="price">80 – 180 €</span><p>Alisado y tratamiento en caliente.</p><span class="dur">2 h – 4 h</span></div>
+        <div class="item"><h3>Reconstrucción en frío</h3><span class="price">45 – 80 €</span><p>Tratamiento de recuperación del cabello.</p><span class="dur">1 h – 2 h 20</span></div>
+      </div>
+
+      <div class="menu" role="tabpanel" id="p-unas" aria-labelledby="t-unas" hidden>
+        <div class="item"><h3>Manicura clásica · él</h3><span class="price">25 €</span><p>Cuidado completo de manos.</p><span class="dur">1 h</span></div>
+        <div class="item"><h3>Manicura con lima · él</h3><span class="price">30 €</span><p>Incluye capa transparente fortalecedora.</p><span class="dur">1 h 10</span></div>
+        <div class="item"><h3>Pedicura clásica · él</h3><span class="price">40 €</span><p>Pedicura masculina completa.</p><span class="dur">1 h</span></div>
+        <div class="item"><h3>Manicura clásica · ella</h3><span class="price">20 €</span><p>Sin esmalte.</p><span class="dur">40 min</span></div>
+        <div class="item"><h3>Manicura con lima · ella</h3><span class="price">40 €</span><p>Forma y cuidado de cutícula.</p><span class="dur">2 h</span></div>
+        <div class="item"><h3>Manicura + esmalte gel</h3><span class="price">50 €</span><p>Retirada incluida, largo 1–2.</p><span class="dur">2 h</span></div>
+        <div class="item"><h3>Extensiones + gel</h3><span class="price">desde 50 €</span><p>El precio depende del largo y el diseño.</p><span class="dur">3 h</span></div>
+        <div class="item"><h3>Pedicura · ella</h3><span class="price">30 – 45 €</span><p>Clásica o con retirada y esmalte gel.</p><span class="dur">50 min – 2 h</span></div>
+      </div>
+
+      <div class="menu" role="tabpanel" id="p-extras" aria-labelledby="t-extras" hidden>
+        <div class="item"><h3>Tinte cabello</h3><span class="price">20 €</span><p>Cobertura de canas.</p><span class="dur">25 min</span></div>
+        <div class="item"><h3>Tinte barba</h3><span class="price">20 €</span><p>Cobertura de canas en barba.</p><span class="dur">15 min</span></div>
+        <div class="item"><h3>Lavado y peinado</h3><span class="price">10 €</span><p>Para caballero.</p><span class="dur">20 min</span></div>
+        <div class="item"><h3>Limpieza facial</h3><span class="price">20 €</span><p>Limpieza, vapor, peeling, hidratación y nutrición.</p><span class="dur">20 min</span></div>
+      </div>
+
+      <p class="menu-note">Precios en euros, IVA incluido, según la carta publicada en Booksy. El precio final se confirma al reservar.</p>
+
+      <div class="club">
+        <div><p class="eyebrow">Membresía YZEE</p><h3>Siempre a punto</h3><p>Paga por adelantado y ahorra hasta 20 € al mes. También hay bonos de sesiones para usar cuando quieras.</p></div>
+        <div><p class="eyebrow">Weekly cut</p><span class="big">72 € <small>/ 30 días</small></span><p>4 cortes de caballero en un mes, uno por semana.</p></div>
+        <div><p class="eyebrow">Weekly cut &amp; beard</p><span class="big">108 € <small>/ 30 días</small></span><p>4 cortes + barba en un mes.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EQUIPO -->
+  <section class="block" id="equipo" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Ocho profesionales</p>
+          <h2>El equipo</h2>
+        </div>
+        <p>Barberos con formación en Kyiv, Varsovia, Canadá y España. Elige a tu barbero al reservar.</p>
+      </div>
+      <div class="team">
+        <article class="member"><figure><img src="img/nico.jpg" alt="Nico, barbero" loading="lazy"></figure><span class="role">Top Barber</span><h3>Nico</h3><p>Corte caballero y corte + barba.</p></article>
+        <article class="member"><figure><img src="img/alejo.jpg" alt="Alejo, barbero" loading="lazy"></figure><span class="role">Top Barber</span><h3>Alejo</h3><p>"Alejo brother me arreglaste la vida" (Enrique).</p></article>
+        <article class="member"><figure><img src="img/cristian.jpg" alt="Cristian, barbero" loading="lazy"></figure><span class="role">Top Barber</span><h3>Cristian</h3><p>Corte caballero desde 18 €.</p></article>
+        <article class="member"><figure><img src="img/yura.jpg" alt="Yura, barbero" loading="lazy"></figure><span class="role">Top Barber</span><h3>Yura</h3><p>Fades y corte + barba.</p></article>
+        <article class="member"><figure><img src="img/bohdan.jpg" alt="Bohdan, barbero" loading="lazy"></figure><span class="role">Top Barber</span><h3>Bohdan</h3><p>Fades y corte + barba.</p></article>
+        <article class="member"><figure><img src="img/valentin.jpg" alt="Valentin, barbero" loading="lazy"></figure><span class="role">ART Barber</span><h3>Valentin</h3><p>8 años de oficio entre Kyiv, Varsovia y Canadá. Precisión y fades limpios.</p></article>
+        <article class="member"><figure><img src="img/alla.jpg" alt="Alla, barbera y estilista" loading="lazy"></figure><span class="role">ART Barber · Mujer</span><h3>Alla</h3><p>Barbería, cortes de mujer y niños.</p></article>
+        <article class="member"><figure><img src="img/anastasia.jpg" alt="Anastasia, estilista" loading="lazy"></figure><span class="role">Estilista mujer</span><h3>Anastasia</h3><p>Corte, color y tratamientos.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOTOS + CITA -->
+  <section class="block photos" id="fotos">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Trabajos reales del estudio</p>
+          <h2>Fotos y<br>pide tu cita</h2>
+        </div>
+        <p>Mira lo que hacemos, elige servicio, barbero y día, y termina la reserva en Booksy en menos de un minuto.</p>
+      </div>
+      <div class="ph-grid">
+        <div class="gallery" id="gallery">
+          <button><img src="img/trabajo-3.jpg" alt="Skin fade con textura arriba" loading="lazy"><figcaption>Fade + textura</figcaption></button>
+          <button><img src="img/local.jpg" alt="Interior del estudio YZEE en Alicante" loading="lazy"><figcaption>El estudio</figcaption></button>
+          <button><img src="img/s-barba.jpg" alt="Afeitado de barba con toalla caliente" loading="lazy"><figcaption>Toalla caliente</figcaption></button>
+          <button><img src="img/s-corte-barba.jpg" alt="Corte con degradado y barba perfilada" loading="lazy"><figcaption>Corte + barba</figcaption></button>
+          <button><img src="img/trabajo-4.jpg" alt="Melena larga lisa con brillo" loading="lazy"><figcaption>Mujer · largo</figcaption></button>
+          <button><img src="img/s-nino.jpg" alt="Corte de niño con degradado" loading="lazy"><figcaption>Corte niño</figcaption></button>
+          <button><img src="img/s-corte.jpg" alt="Barbero secando el pelo de un cliente" loading="lazy"><figcaption>Peinado</figcaption></button>
+          <button><img src="img/trabajo-2.jpg" alt="Pelo largo castaño tras tratamiento" loading="lazy"><figcaption>Keratina</figcaption></button>
+          <button><img src="img/trabajo-5.jpg" alt="Clienta rubia en la puerta del estudio YZEE" loading="lazy"><figcaption>Rubio · color</figcaption></button>
+        </div>
+
+        <form class="book" id="book" novalidate>
+          <p class="eyebrow">Reserva online</p>
+          <h3>Pide tu cita</h3>
+          <label for="b-service">Servicio
+            <select id="b-service">
+              <option>Corte caballero · desde 18 €</option>
+              <option>Corte + barba · desde 27 €</option>
+              <option>Barba · desde 14,40 €</option>
+              <option>Corte niño · 22 €</option>
+              <option>Servicio premium · desde 50 €</option>
+              <option>Corte mujer · desde 35 €</option>
+              <option>Color / mechas · desde 40 €</option>
+              <option>Manicura / pedicura · desde 20 €</option>
+            </select>
+          </label>
+          <label for="b-staff">Profesional
+            <select id="b-staff">
+              <option>Cualquiera disponible</option>
+              <option>Nico</option><option>Alejo</option><option>Cristian</option><option>Yura</option><option>Bohdan</option><option>Valentin</option><option>Alla</option><option>Anastasia</option>
+            </select>
+          </label>
+          <div>
+            <span class="eyebrow" style="display:block;margin-bottom:6px">Día</span>
+            <div class="days" id="days" role="group" aria-label="Elige día"></div>
+          </div>
+          <p class="summary" id="summary" aria-live="polite"></p>
+          <a class="btn btn--book" id="b-go" href="https://booksy.com/es-es/152610_yzee-male-club-hair-beauty-studio_barberia_55436_alicante-alacant" target="_blank" rel="noopener">Elegir hora en Booksy
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13 13 3M6 3h7v7" stroke="currentColor" stroke-width="1.8"/></svg></a>
+          <p class="fine">Se abre nuestro perfil de Booksy con las horas libres reales. Allí confirmas la cita y recibes el recordatorio.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEÑAS -->
+  <section class="block" id="resenas">
+    <div class="wrap">
+      <div class="reviews">
+        <div>
+          <div class="score">5,0<small>151 reseñas verificadas en Booksy</small></div>
+          <div class="bars" aria-label="Reparto de valoraciones">
+            <div class="bar"><span>5★</span><i style="--w:99.3%"></i><span>150</span></div>
+            <div class="bar"><span>4★</span><i style="--w:0%"></i><span>0</span></div>
+            <div class="bar"><span>3★</span><i style="--w:0%"></i><span>0</span></div>
+            <div class="bar"><span>2★</span><i style="--w:0%"></i><span>0</span></div>
+            <div class="bar"><span>1★</span><i style="--w:.7%"></i><span>1</span></div>
+          </div>
+        </div>
+        <blockquote>
+          <p>"Alejo brother me arreglaste la vida. 10/10"</p>
+          <cite>Enrique · Corte caballero con Alejo · noviembre 2026</cite>
+        </blockquote>
+      </div>
+      <div class="perks" aria-label="Comodidades">
+        <span>Agua o café incluido</span><span>Zona PlayStation</span><span>Wi-Fi</span><span>Pago con tarjeta</span><span>Acceso para movilidad reducida</span><span>Adaptado para niños</span><span>Se admiten mascotas</span><span>Programa de fidelidad</span><span>Bonos de sesiones</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISÍTANOS -->
+  <section class="block" id="visitanos" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Centro de Alicante</p>
+          <h2>Visítanos</h2>
+        </div>
+      </div>
+      <div class="visit">
+        <div>
+          <dl>
+            <dt>Dirección</dt>
+            <dd>Calle Calderón de la Barca, 12<br>03004 Alicante <button class="copy" type="button" data-copy="Calle Calderón de la Barca, 12, 03004 Alicante">Copiar</button></dd>
+            <dt>Teléfono</dt>
+            <dd id="phone">Reservas y consultas por Booksy o Instagram</dd>
+            <dt>Instagram</dt>
+            <dd><a href="https://www.instagram.com/yzee.male.club/" target="_blank" rel="noopener">@yzee.male.club</a></dd>
+            <dt>Reservas</dt>
+            <dd><a href="https://booksy.com/es-es/152610_yzee-male-club-hair-beauty-studio_barberia_55436_alicante-alacant" target="_blank" rel="noopener">booksy.com · YZEE Male Club</a></dd>
+            <dt>Idiomas</dt>
+            <dd>Español, inglés, ucraniano y polaco</dd>
+          </dl>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=38.348994,-0.485808" target="_blank" rel="noopener"><b>Cómo llegar</b><span>Abrir en Google Maps ↗</span></a>
+        </div>
+        <div>
+          <p class="eyebrow" style="margin-bottom:8px">Horario</p>
+          <table class="hours" id="hours">
+            <tbody>
+              <tr data-d="1"><td>Lunes</td><td>10:00 – 20:00</td></tr>
+              <tr data-d="2"><td>Martes</td><td>10:00 – 20:00</td></tr>
+              <tr data-d="3"><td>Miércoles</td><td>10:00 – 20:00</td></tr>
+              <tr data-d="4"><td>Jueves</td><td>10:00 – 20:00</td></tr>
+              <tr data-d="5"><td>Viernes</td><td>10:00 – 20:00</td></tr>
+              <tr data-d="6"><td>Sábado</td><td>10:00 – 20:00</td></tr>
+              <tr data-d="0" class="closed"><td>Domingo</td><td>Cerrado</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <h2>¿Te toca<br>corte?</h2>
+      <a class="btn btn--book" href="https://booksy.com/es-es/152610_yzee-male-club-hair-beauty-studio_barberia_55436_alicante-alacant" target="_blank" rel="noopener">Reservar en Booksy
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13 13 3M6 3h7v7" stroke="currentColor" stroke-width="1.8"/></svg></a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year">2026</span> YZEE Male Club · Hair &amp; Beauty Studio · Alicante</span>
+    <span><a href="https://www.instagram.com/yzee.male.club/" target="_blank" rel="noopener">Instagram</a> · <a href="https://booksy.com/es-es/152610_yzee-male-club-hair-beauty-studio_barberia_55436_alicante-alacant" target="_blank" rel="noopener">Booksy</a></span>
+  </div>
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Foto ampliada">
+  <img id="lb-img" alt="">
+  <button type="button" id="lb-close">Cerrar ✕</button>
+</div>
+
+<script>
+(function(){
+  // Tabs
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  tabs.forEach(function(t){t.addEventListener('click',function(){
+    tabs.forEach(function(o){o.setAttribute('aria-selected',o===t?'true':'false');document.getElementById(o.getAttribute('aria-controls')).hidden=(o!==t);});
+  });});
+
+  // Today in hours + open now
+  var now=new Date(), d=now.getDay(), h=now.getHours()+now.getMinutes()/60;
+  var row=document.querySelector('#hours tr[data-d="'+d+'"]'); if(row) row.classList.add('today');
+  var open=document.getElementById('open-now');
+  if(d!==0 && h>=10 && h<20) open.textContent='Abierto ahora · cierra a las 20:00';
+  else open.textContent='Ahora cerrado · domingo cerrado';
+
+  // Booking helper: next 6 open days (Mon-Sat)
+  var names=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'], days=document.getElementById('days'), picked=null;
+  var cursor=new Date(now); if(h>=19) cursor.setDate(cursor.getDate()+1);
+  var count=0;
+  while(count<6){
+    if(cursor.getDay()!==0){
+      var b=document.createElement('button'); b.type='button';
+      b.innerHTML='<small>'+names[cursor.getDay()]+'</small>'+cursor.getDate();
+      b.dataset.label=(count===0 && cursor.toDateString()===now.toDateString()?'hoy, ':'')+names[cursor.getDay()].toLowerCase()+' '+cursor.getDate();
+      b.setAttribute('aria-pressed',count===0?'true':'false');
+      if(count===0) picked=b;
+      b.addEventListener('click',function(){ if(picked) picked.setAttribute('aria-pressed','false'); this.setAttribute('aria-pressed','true'); picked=this; sum(); });
+      days.appendChild(b); count++;
+    }
+    cursor.setDate(cursor.getDate()+1);
+  }
+  var svc=document.getElementById('b-service'), stf=document.getElementById('b-staff'), out=document.getElementById('summary');
+  function sum(){
+    out.innerHTML='Vas a reservar <b>'+svc.value.split(' · ')[0]+'</b> con <b>'+(stf.selectedIndex? stf.value : 'el primer barbero libre')+'</b> para <b>'+(picked?picked.dataset.label:'')+'</b>.';
+  }
+  svc.addEventListener('change',sum); stf.addEventListener('change',sum); sum();
+  document.getElementById('book').addEventListener('submit',function(e){e.preventDefault();});
+
+  // Lightbox
+  var lb=document.getElementById('lb'), lbi=document.getElementById('lb-img'), last=null;
+  document.getElementById('gallery').addEventListener('click',function(e){
+    var btn=e.target.closest('button'); if(!btn) return; var im=btn.querySelector('img');
+    last=btn; lbi.src=im.src; lbi.alt=im.alt; lb.hidden=false; document.getElementById('lb-close').focus();
+  });
+  function close(){ lb.hidden=true; if(last) last.focus(); }
+  document.getElementById('lb-close').addEventListener('click',close);
+  lb.addEventListener('click',function(e){ if(e.target===lb) close(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && !lb.hidden) close(); });
+
+  // Copy address
+  [].forEach.call(document.querySelectorAll('[data-copy]'),function(b){
+    b.addEventListener('click',function(){
+      var txt=b.getAttribute('data-copy');
+      var done=function(){ b.textContent='Copiada'; setTimeout(function(){b.textContent='Copiar';},1800); };
+      try{ navigator.clipboard.writeText(txt).then(done,function(){ select(b); }); }catch(err){ select(b); }
+    });
+  });
+  function select(b){ var r=document.createRange(); r.selectNodeContents(b.parentNode); var s=getSelection(); s.removeAllRanges(); s.addRange(r); }
+
+  document.getElementById('year').textContent=now.getFullYear();
+})();
+</script>
+</body>
+</html>
